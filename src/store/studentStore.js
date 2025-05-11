@@ -1,19 +1,24 @@
 /* eslint-disable no-unused-vars */
 import { create } from "zustand";
-import { studentService } from "../services/api";
+import { studentService } from "../lib/api";
 
 const useStudentStore = create((set, get) => ({
   students: [],
+  student: {},
   loading: false,
   error: null,
-  selectedStudent: null,
 
   // Fetch all students
   fetchStudents: async () => {
     set({ loading: true, error: null });
     try {
       const response = await studentService.getAllStudents();
-      set({ students: response.data, loading: false });
+
+      if (response.success) {
+        set({ students: response.data, loading: false });
+      } else {
+        set({ error: response.message, loading: false });
+      }
     } catch (error) {
       set({ error: error.message, loading: false });
     }
