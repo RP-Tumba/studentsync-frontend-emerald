@@ -1,10 +1,10 @@
 
-const AllStudents=()=>{
+const AllStudents = () => {
     return (
         <div>
-        <h1>
-            All Students here
-        </h1>
+            <h1>
+                All Students here
+            </h1>
         </div>
     )
 }

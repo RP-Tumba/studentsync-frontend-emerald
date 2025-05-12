@@ -1,16 +1,18 @@
-*{
+* {
     font-family: Poppins;
 
 }
+
 .nav-main {
     display: flex;
-   gap:35rem ;
-   padding: 2rem 2rem;
-   align-items: center;
+    gap: 35rem;
+    padding: 2rem 2rem;
+    align-items: center;
 }
-.nav-content p{
+
+.nav-content p {
     color: #004B2F;
-    font-weight:700;
+    font-weight: 700;
     size: 24px;
 }
 
@@ -30,17 +32,20 @@
     align-items: center;
 
 }
+
 .nav-right ul li {
-   list-style: none;
-    
+    list-style: none;
+
 
 }
-.Home-style{
+
+.Home-style {
     color: #83C727;
     size: 16px;
     font-weight: 600;
 }
-.AllStudents-style{
+
+.AllStudents-style {
     size: 16px;
     color: #83C727;
     font-weight: 600;
@@ -48,10 +53,11 @@
     border: 2px solid #83C727;
     border-radius: 8px;
 }
-.AddStudent-style{
+
+.AddStudent-style {
     color: #686868;
     font-weight: 500;
     size: 16px;
 
-   
+
 }
