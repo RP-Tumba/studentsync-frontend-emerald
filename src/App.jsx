@@ -1,8 +1,4 @@
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import StudentList from "./pages/StudentList";
-import "./App.css";
 import Home from "./pages/Home";
 import AddStudent from "./pages/AddStudent";
 import AllStudents from "./pages/Allstudents";
