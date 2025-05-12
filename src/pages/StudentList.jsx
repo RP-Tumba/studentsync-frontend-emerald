@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import useStudentStore from '../store/studentStore';
+import useStudentStore from "../store/studentStore";
 
 const StudentList = () => {
   // eslint-disable-next-line no-unused-vars
@@ -8,6 +8,7 @@ const StudentList = () => {
 
   useEffect(() => {
     fetchStudents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) return <div>Loading...</div>;
