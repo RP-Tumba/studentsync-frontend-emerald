@@ -1,0 +1,57 @@
+*{
+    font-family: Poppins;
+
+}
+.nav-main {
+    display: flex;
+   gap:35rem ;
+   padding: 2rem 2rem;
+   align-items: center;
+}
+.nav-content p{
+    color: #004B2F;
+    font-weight:700;
+    size: 24px;
+}
+
+.nav-log-image {
+    width: 23px;
+    margin-right: 0px;
+}
+
+.nav-left {
+    display: flex;
+    margin-left: 3rem;
+}
+
+.nav-right ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+}
+.nav-right ul li {
+   list-style: none;
+    
+
+}
+.Home-style{
+    color: #83C727;
+    size: 16px;
+    font-weight: 600;
+}
+.AllStudents-style{
+    size: 16px;
+    color: #83C727;
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 2px solid #83C727;
+    border-radius: 8px;
+}
+.AddStudent-style{
+    color: #686868;
+    font-weight: 500;
+    size: 16px;
+
+   
+}
