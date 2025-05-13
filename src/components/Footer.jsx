@@ -17,18 +17,20 @@ const Footer = () => {
           <p className="paragraph1">Student management platform</p>
           <br />
           <h4>Our Address</h4>
-          <p className="paragraph2">
-            {" "}
+          <div className="location-text">
             <IoLocationSharp />
-            Gasabo District, Kinyinya Sector Murama Cell, Rusenyi Village
+            <p className="paragraph2">
+              {" "}
+              Gasabo District, Kinyinya Sector Murama Cell, Rusenyi Village
+              <br />
+              KG 29 Ave 16, Kigali, Rwanda
+            </p>{" "}
             <br />
-            KG 29 Ave 16, Kigali, Rwanda
-          </p>{" "}
-          <br />
-          <p>
-            {" "}
-            <FaClock /> Working Hours: Monday - Friday 08:00 - 17:00
-          </p>
+          </div>
+          <div className="clock-text">
+            <FaClock />
+            <p> Working Hours: Monday - Friday 08:00 - 17:00</p>
+          </div>
         </div>
 
         <div className="middle-footer-content">

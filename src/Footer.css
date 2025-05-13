@@ -59,6 +59,16 @@
     padding-bottom: 13px;
 
 }
+.location-text{
+    display: flex;
+    gap: 0.1rem;
+}
+.clock-text{
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 20px;
+
+}
 .footer-copy-content{
     background-color: #F8FBFD;
     text-align: center;
