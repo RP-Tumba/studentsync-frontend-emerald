@@ -229,3 +229,14 @@ text-align: center;
 .culture{
   padding-top: 3rem;
 }
+.gallery-link{
+  padding-left: 16rem;
+  gap: 4rem;
+
+}
+.gallery img{
+  height: 210px;
+  border-radius: 10px;
+
+
+}
