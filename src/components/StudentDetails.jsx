@@ -64,8 +64,7 @@ const StudentDetails = () => {
     return (
       <div className="loading">
         <p>
-          The updating info is Loading... available ({students?.length || 0}{" "}
-          students)
+          The updating info is Loading... 
         </p>
         <h2>Available student</h2>
         {students?.map((studn, index) => (
