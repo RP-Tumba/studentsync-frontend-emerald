@@ -230,13 +230,10 @@ text-align: center;
   padding-top: 3rem;
 }
 .gallery-link{
-  padding-left: 16rem;
   gap: 4rem;
-
+  justify-content: center;
 }
 .gallery img{
   height: 210px;
   border-radius: 10px;
-
-
 }
