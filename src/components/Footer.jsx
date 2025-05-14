@@ -1,45 +1,43 @@
-import { IoLocationSharp } from "react-icons/io5";
-import { FaClock } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
+import { IoLocationSharp } from 'react-icons/io5';
+import { FaClock } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { FaPhone } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
+import { FaYoutube } from 'react-icons/fa';
 
-import "../Footer.css";
+import '../Footer.css';
 
 const Footer = () => {
   return (
     <div>
-      <div className="Footer-main">
+      <div className="footer-main">
         <div className="left-footer-content">
-          <h3>STUDENTSYNC MANAGEMENT APP</h3>
-          <p className="paragraph1">Student management platform</p>
-          <br />
-          <h4>Our Address</h4>
-          <div className="location-text">
-            <IoLocationSharp />
-            <p className="paragraph2">
-              {" "}
-              Gasabo District, Kinyinya Sector Murama Cell, Rusenyi Village
-              <br />
-              KG 29 Ave 16, Kigali, Rwanda
-            </p>{" "}
-            <br />
+          <div>
+            <h3>STUDENTSYNC MANAGEMENT APP</h3>
+            <p className="paragraph1">Student management platform</p>
           </div>
-          <div className="clock-text">
-            <FaClock />
+          <h4>Our Address</h4>
+          <div className="address">
+            <IoLocationSharp size={20} />
+
+            <p className="text-sm">
+              Gasabo District, Kinyinya Sector Murama Cell, Rusenyi Village KG 29 Ave 16, Kigali,
+              Rwanda
+            </p>
+          </div>
+          <div className="address">
+            <FaClock size={14} />
             <p> Working Hours: Monday - Friday 08:00 - 17:00</p>
           </div>
         </div>
 
         <div className="middle-footer-content">
           <h4>Contact us</h4>
-          <p className="paragraph3">
+          <p className="address">
             <MdEmail /> info@thegymcapstone.rw
           </p>
-          <p className="paragraph4">
-            {" "}
+          <p className="address">
             <FaPhone className="phone-icon" /> 0788-322-223
           </p>
         </div>
@@ -51,12 +49,10 @@ const Footer = () => {
               <FaInstagram />
             </li>
             <li>
-              {" "}
               <FaFacebook />
             </li>
             <li>
-              {" "}
-              <FaYoutube />{" "}
+              <FaYoutube />
             </li>
           </ul>
         </div>

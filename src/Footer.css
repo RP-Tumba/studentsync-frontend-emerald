@@ -1,82 +1,105 @@
 
-.Footer-main{
+.footer-main{
     display: flex;
-    gap: 8rem;
+    gap: 5rem;
     padding: 3rem 10rem;
     background-color: #F8FBFD;
-    font-family: Poppins;
-    
-
-
+    font-family: 'Poppins';
 }
 .left-footer-content h3{
     color: #004B2F;
     font-weight: 800;
     font-size: 24px;
-
 }
 .paragraph1{
     color: #83C727;
     font-size: 16px;
     font-weight: 500;
 }
-.left-footer-content h4{
+.footer-main h4{
     color: #323232;
     font-weight: 700;
-    padding-bottom: 13px;
-
-}
-.left-footer-content .paragraph2{
-    font-size: 16px;
-    font-weight: 400;
-  
-
-
-}
-.middle-footer-content h4{
-    color: #323232;
-    font-weight: 700;
-    padding-bottom: 13px;
-
-}
-
-.middle-footer-content .paragraph4{
-    padding-top:15px ;
+    margin-bottom: 13px;
 }
 .middle-footer-content .phone-icon{
     transform: rotate(90deg);
-
 }
-.right-footer-content ul{
+.footer-main ul{
     display: flex;
     gap: 0.7rem;
-}.right-footer-content ul li{
+}
+.footer-main ul li{
     list-style: none;
 }
-.right-footer-content h4{
-    color: #323232;
-    font-weight: 700;
-    padding-bottom: 13px;
-
-}
-.location-text{
+.address{
     display: flex;
-    gap: 0.1rem;
+    gap: 10px;
+    align-items: start;
 }
-.clock-text{
-    display: flex;
-    gap: 0.3rem;
-    margin-top: 20px;
 
+.text-sm{
+    font-size: 14px;
+}
+.left-footer-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.right-footer-content{
+    width: 10%;
 }
 .footer-copy-content{
     background-color: #F8FBFD;
     text-align: center;
-    font-weight: 400;
     size: 16px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    font-family: Poppins;
-    padding: 2rem;
-
+    font-family: 'Poppins';
+    padding: 1em;
 }
+
+
+
+
+/* ---------------- Responsive Design ---------------- */
+
+@media (max-width: 1024px) {
+  .footer-main {
+    padding: 3rem 5rem;
+    gap: 4rem;
+
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .left-footer-content,
+  .middle-footer-content,
+  .right-footer-content {
+    width: 100%;
+  }
+
+  .footer-main ul {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-main {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .footer-main ul {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .footer-copy-content {
+    font-size: 14px;
+    padding: 1.5rem;
+  }
+} 
+
