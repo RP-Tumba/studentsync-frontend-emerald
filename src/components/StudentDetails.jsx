@@ -10,11 +10,14 @@ class StudentDetails extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("http://localhost:5000/api/v1/students/631")
-      .then((res) => res.json())
-      .then((data) => this.setState({ student: data.data }))
-      .catch((err) => console.error("Error:", err));
+  async componentDidMount() {
+    try {
+      const res = await fetch("http://localhost:5000/api/v1/students/631");
+      const data = await res.json();
+      this.setState({ student: data.data });
+    } catch (err) {
+      console.error("Error:", err);
+    }
   }
 
   handleInputChange = (e) => {
@@ -27,7 +30,27 @@ class StudentDetails extends Component {
     }));
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:5000/api/v1/students/631", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state.student),
+    })
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({ student: data.data }, window.location.reload()),
+      )
+      .catch((err) => console.error("Error:", err));
+  };
+
   toggleEdit = () => {
+    if (this.state.isEditable) {
+      this.componentDidMount(); // Reset fields by reloading the original data
+    }
     this.setState((prevState) => ({
       isEditable: !prevState.isEditable,
     }));
@@ -35,6 +58,7 @@ class StudentDetails extends Component {
 
   render() {
     const { student, isEditable } = this.state;
+
     const currentTime = new Date().toLocaleDateString("en-US", {
       weekday: "short",
       year: "numeric",
@@ -43,7 +67,7 @@ class StudentDetails extends Component {
     });
 
     if (!student) {
-      return <div>The updating info is Loading...</div>; // To avoid issues when student data is still being fetched
+      return <div className="loading">The updating info is Loading...</div>;
     }
 
     return (
@@ -76,7 +100,7 @@ class StudentDetails extends Component {
               </div>
             </div>
 
-            <form className="all_fieldupdate">
+            <form onSubmit={this.handleSubmit} className="all_fieldupdate">
               <div className="first-name">
                 <label>First Name</label>
                 <input
@@ -118,9 +142,9 @@ class StudentDetails extends Component {
               <div className="Date-Of-Birth">
                 <label>Date Of Birth</label>
                 <input
-                  name="dob"
+                  name="date_of_birth"
                   type="text"
-                  value={student.dob}
+                  value={student.date_of_birth}
                   onChange={this.handleInputChange}
                   readOnly={!isEditable}
                 />
@@ -129,9 +153,9 @@ class StudentDetails extends Component {
               <div className="Contact-Number">
                 <label>Contact Number</label>
                 <input
-                  name="contact"
+                  name="contact_number"
                   type="text"
-                  value={student.contact}
+                  value={student.contact_number}
                   onChange={this.handleInputChange}
                   readOnly={!isEditable}
                 />
@@ -147,19 +171,31 @@ class StudentDetails extends Component {
                   readOnly={!isEditable}
                 />
               </div>
-            </form>
 
-            <div className="update-last">
-              <h5>My Email Address</h5>
-              <div className="last-profile">
-                <img src={image} alt="email profile" />
-                <div className="inside3">
-                  <h4>{student?.email || "Loading..."}</h4>
-                  <p>2 months ago</p>
+              <div className="update-last">
+                <h5>My Email Address</h5>
+                <div className="last-profile">
+                  <img src={image} alt="email profile" />
+                  <div className="inside3">
+                    <h4>{student.email || "Loading..."}</h4>
+                    <p>2 months ago</p>
+                  </div>
                 </div>
               </div>
-              <button className="update-back">Go Back</button>
-            </div>
+
+              <div className="update-btn">
+                <button className="update-back" type="button">
+                  Go Back
+                </button>
+                <button
+                  className="update-submit"
+                  type="submit"
+                  disabled={!isEditable}
+                >
+                  Update
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </>
