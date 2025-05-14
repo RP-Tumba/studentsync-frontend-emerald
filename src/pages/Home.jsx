@@ -94,13 +94,13 @@ const Home = () => {
           </ul>
         </div>
         <div className="flex culture-content culture">
-          <div className="h-b">
+          <div>
             <img src={img5} alt="" />
           </div>
-          <div className="h-b ">
+          <div>
             <img src={img6} alt="" />
           </div>
-          <div className="h-b">
+          <div>
             <img src={img7} alt="" />
           </div>
         </div>
