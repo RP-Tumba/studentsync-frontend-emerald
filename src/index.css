@@ -191,3 +191,32 @@ body{
 .text-white{
   color: #ffffff;
 }
+.culture h3{
+  text-align: center;
+}
+.culture h2{
+text-align: center;
+}
+.culture-icon-title{
+  display: flex;
+  gap:0.4rem;
+  align-items: center;
+}
+.low-size-p{
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px;
+}
+.culture-content1{
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+.culture-content-bgl-blue{
+  background-color: #67629D;
+}
+.culture-content{
+  display: flex;
+  gap: 0.5rem;
+  padding: 2rem;
+}
