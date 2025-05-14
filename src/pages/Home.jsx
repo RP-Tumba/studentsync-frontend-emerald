@@ -104,6 +104,9 @@ const Home = () => {
             <img src={img7} alt="" />
           </div>
         </div>
+        <div className="more-images">
+          <p>More pictures</p>
+        </div>
       </div>
     </div>
   );
