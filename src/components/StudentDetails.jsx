@@ -32,7 +32,7 @@ function StudentDetails() {
               </div>
             </div>
             <div className="edit-btn">
-              <button className="updating-btn">edit</button>
+              <button className="updating-btn">Edit</button>
             </div>
           </div>
 
