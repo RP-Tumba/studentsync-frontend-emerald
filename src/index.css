@@ -13,6 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -54,6 +61,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -66,3 +74,59 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.nav-image img{
+  width: 50px;
+
+}
+.navbar{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-right ul{
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.brand-title h1{
+font-size: 24px;
+font-weight: 700;
+}
+.text-green{
+  color: #83C727;
+  font-style: Poppins;
+  font-size: 600;
+}
+.text-gray{
+  color: #004B2F;
+}
+.text-black{
+  color: #686868;
+  font-weight: 500;
+}
+.btn-outline-green{
+  background-color: white;
+  border: 2px solid ;
+}
+
+
+
+@media (max-width: 580px){
+.navbar{
+  display: block;
+}
+.nav-right ul{
+  justify-content: center;
+}
+.brand{
+  justify-content: center;
+  padding: 0 1.5em;
+}
+}
+
