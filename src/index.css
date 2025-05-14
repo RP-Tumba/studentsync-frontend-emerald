@@ -225,4 +225,7 @@ text-align: center;
   display: flex;
   gap: 0.5rem;
   padding: 2rem;
+} 
+.culture{
+  padding-top: 3rem;
 }
