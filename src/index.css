@@ -131,6 +131,12 @@ font-weight: 700;
   justify-content: center;
   padding: 0 1.5em;
 }
+.culture-content{
+  display: block !important;
+  gap: 2rem;
+  
+}
+
 }
 
 
