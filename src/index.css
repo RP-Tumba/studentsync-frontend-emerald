@@ -136,7 +136,58 @@ font-weight: 700;
 
 
 /* *******banner section */
+body{
+  background-color: white !important;
+}
 .container{
   background-color: var(--white-color);
     
+}
+.text-amber{
+  color: #d49104;
+}
+.intro{
+  display: flex;
+  gap:3em;
+  padding: 1em;
+  align-items: center;
+}
+.right-side img{
+  width: 100%;
+}
+.right-side{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:1em
+}
+.right-side div:first-child{
+  grid-column: 1/4 ;
+}
+
+.h-b img{
+  height: 120px;
+}
+.left-side{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.left-side h1{
+  font-size:3em;
+  font-weight: 600;
+  line-height: 70px;
+}
+.btn-outline-green{
+  border: 2px solid #83C727;
+}
+.flex{
+  display: flex;
+  gap: 1em;
+}
+
+.bg-green{
+  background-color: #83C727;
+}
+.text-white{
+  color: #ffffff;
 }
