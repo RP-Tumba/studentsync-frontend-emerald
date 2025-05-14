@@ -6,7 +6,7 @@ import img5 from '../assets/img-5.png';
 import img6 from '../assets/img-6.png';
 import img7 from '../assets/img-7.png';
 
-import { FaClock, FaHandRock, FaUser } from 'react-icons/fa';
+import { FaClock, FaHandRock, FaUser, FaGreaterThan } from 'react-icons/fa';
 
 const Home = () => {
   return (
@@ -44,7 +44,7 @@ const Home = () => {
         <h2 className="text-gray">The Gym College Students management</h2>
       </div>
 
-      <div className="culture-content">
+      <div className="culture-content pt  ">
         <div className="culture-content1">
           <div className="culture-icon-title">
             <FaHandRock />
@@ -93,19 +93,25 @@ const Home = () => {
             <li>Projects phase</li>
           </ul>
         </div>
-        <div className="flex culture-content culture">
-          <div>
-            <img src={img5} alt="" />
+
+        <div className="culture">
+          <div className="flex">
+            <div>
+              <img src={img5} alt="" />
+            </div>
+            <div>
+              <img src={img6} alt="" />
+            </div>
+            <div>
+              <img src={img7} alt="" />
+            </div>
           </div>
-          <div>
-            <img src={img6} alt="" />
+          <div className="flex text-green more-image ">
+            <p>
+              <span className="low-size-p">More pictures</span>
+              <FaGreaterThan size={10} />
+            </p>
           </div>
-          <div>
-            <img src={img7} alt="" />
-          </div>
-        </div>
-        <div className="more-images">
-          <p>More pictures</p>
         </div>
       </div>
     </div>

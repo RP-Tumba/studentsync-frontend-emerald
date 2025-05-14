@@ -224,7 +224,7 @@ text-align: center;
 .culture-content{
   display: flex;
   gap: 0.5rem;
-  padding: 2rem;
+
 } 
 .culture{
   padding-top: 3rem;
@@ -234,6 +234,14 @@ text-align: center;
   justify-content: center;
 }
 .gallery img{
-  height: 210px;
+  width: 100%;
   border-radius: 10px;
+}
+.more-image{
+  align-items: center;
+  justify-content: right;
+}
+
+.pt{
+  padding-top: 3rem;
 }
