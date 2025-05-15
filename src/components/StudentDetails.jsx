@@ -45,11 +45,16 @@ const StudentDetails = () => {
     e.preventDefault();
     await studentService.updateStudent(student.id, student);
     toggleEdit();
+    displaySuccessupdate();
   };
 
   const toggleEdit = () => {
     setIsEditable(prev => !prev);
   };
+
+  const  displaySuccessupdate=()=>{
+    alert("successfully updated");
+  }
 
   const currentTime = new Date().toLocaleDateString('en-US', {
     weekday: 'short',
