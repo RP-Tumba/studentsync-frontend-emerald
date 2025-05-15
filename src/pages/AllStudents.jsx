@@ -1,4 +1,4 @@
-import { FaSearch, FaRegTrashAlt, FaEdit } from 'react-icons/fa';
+import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
 import { useEffect } from 'react';
 const AllStudents = () => {
@@ -19,7 +19,7 @@ const AllStudents = () => {
         <div className="flex items-center">
           <div className="search  items-center">
             <label htmlFor="search-input">
-              <FaSearch size={20} className="icon" />
+              <Search className="icon" />
             </label>
             <div>
               <input type="text" placeholder="Search...." name="term" id="search-input" />
@@ -58,10 +58,10 @@ const AllStudents = () => {
                 <td>
                   <div className="action">
                     <button id="delete">
-                      <FaRegTrashAlt />
+                      <Delete />
                     </button>
                     <button id="edit">
-                      <FaEdit />
+                      <Edit />
                     </button>
                   </div>
                 </td>
