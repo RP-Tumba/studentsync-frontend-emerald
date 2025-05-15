@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import image from "../assets/image.jpeg";
-import { studentService } from "../lib/api.js";
-import { PiEnvelopeSimpleOpen } from "react-icons/pi";
+import React, { useState, useEffect } from 'react';
+import image from '../assets/image.jpeg';
+import { studentService } from '../lib/api.js';
+import { PiEnvelopeSimpleOpen } from 'react-icons/pi';
 
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const StudentDetails = () => {
   const [student, setStudent] = useState(null);
@@ -14,53 +14,50 @@ const StudentDetails = () => {
     const fetchData = async () => {
       try {
         const response = await studentService.getStudentById(
-          "6ffd453b-3673-4a7c-b20b-49a900145030",
+          '6ffd453b-3673-4a7c-b20b-49a900145030'
         );
         setStudent(response.data);
 
         const manyStudents = await studentService.getAllStudents();
         setStudents(manyStudents.data);
       } catch (err) {
-        console.error("Error:", err);
+        console.error('Error:', err);
       }
     };
 
     fetchData();
   }, []);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
 
-    setStudent((prev) => ({
+    setStudent(prev => ({
       ...prev,
       [name]: value,
     }));
   };
 
   console.log(student);
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     await studentService.updateStudent(student.id, student);
   };
 
   const toggleEdit = () => {
-    setIsEditable((prev) => !prev);
+    setIsEditable(prev => !prev);
   };
 
-  const currentTime = new Date().toLocaleDateString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const currentTime = new Date().toLocaleDateString('en-US', {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 
   if (!student) {
     return (
       <div className="loading">
-        <p>
-          The updating info is Loading... available ({students?.length || 0}{" "}
-          students)
-        </p>
+        <p>The updating info is Loading... available ({students?.length || 0} students)</p>
         <h2>Available student</h2>
         {students?.map((studn, index) => (
           <p key={index}>
@@ -98,12 +95,12 @@ const StudentDetails = () => {
 
             <div>
               <button
-                className={`updating-btn ${isEditable && "bg-red"}`}
+                className={`updating-btn ${isEditable && 'bg-red'}`}
                 id="edit-btn"
                 type="button"
                 onClick={toggleEdit}
               >
-                {isEditable ? "Cancel" : "Edit"}
+                {isEditable ? 'Cancel' : 'Edit'}
               </button>
             </div>
           </div>
@@ -182,12 +179,7 @@ const StudentDetails = () => {
 
             <div className="text-right">
               {isEditable && (
-                <button
-                  className="updating-btn"
-                  id="edit-btn"
-                  type="submit"
-                  onClick={toggleEdit}
-                >
+                <button className="updating-btn" id="edit-btn" type="submit" onClick={handleSubmit }>
                   Save
                 </button>
               )}
@@ -201,7 +193,7 @@ const StudentDetails = () => {
                 <PiEnvelopeSimpleOpen size={20} />
               </div>
               <div className="inside3">
-                <h4>{student.email || "Loading..."}</h4>
+                <h4>{student.email || 'Loading...'}</h4>
                 <p className="text-sm">2 months ago</p>
               </div>
             </div>
