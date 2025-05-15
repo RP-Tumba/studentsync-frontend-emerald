@@ -37,7 +37,7 @@ const StudentDetails = () => {
     }));
   };
 
-  console.log(student);
+  // console.log(student);
   const handleSubmit = async (e) => {
     e.preventDefault();
     await studentService.updateStudent(student.id, student);
@@ -70,8 +70,8 @@ const StudentDetails = () => {
       </div>
     );
   }
-  console.log(student);
 
+  console.log(student);
   return (
     <>
       <div className="head">
