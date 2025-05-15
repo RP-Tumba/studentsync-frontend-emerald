@@ -12,7 +12,7 @@ import '../Footer.css';
 
 const Footer = () => {
   return (
-    <div>
+    <footer>
       <div className="footer">
         <div className="footer__brand">
           <div>
@@ -63,7 +63,7 @@ const Footer = () => {
       <div className="footer__copyright">
         <p> &copy; Copyright Students. All Rights Reserved </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

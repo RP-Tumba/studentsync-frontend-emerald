@@ -5,6 +5,7 @@
     padding: 3rem 10rem;
     background-color: #F8FBFD;
     font-family: 'Poppins';
+    width: 100%;
 }
 .footer__brand{
     display: flex;
