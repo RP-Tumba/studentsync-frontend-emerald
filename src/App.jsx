@@ -4,6 +4,7 @@ import AddStudent from "./pages/AddStudent";
 import AllStudents from "./pages/Allstudents";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StudentList from "./pages/StudentList";
+import Navbar from "./components/Navbar";
 
 import './App.css';
 
