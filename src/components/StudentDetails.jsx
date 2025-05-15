@@ -2,20 +2,23 @@ import React, { useState, useEffect } from 'react';
 import image from '../assets/image.jpeg';
 import { studentService } from '../lib/api.js';
 import { PiEnvelopeSimpleOpen } from 'react-icons/pi';
+import { useParams } from 'react-router-dom';
 
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const StudentDetails = () => {
+  const { id } = useParams();
   const [student, setStudent] = useState(null);
   const [isEditable, setIsEditable] = useState(false);
   const [students, setStudents] = useState(null);
 
   useEffect(() => {
+    
     const fetchData = async () => {
+     
       try {
-        const response = await studentService.getStudentById(
-          '6ffd453b-3673-4a7c-b20b-49a900145030'
-        );
+         
+        const response = await studentService.getStudentById(id);
         setStudent(response.data);
 
         const manyStudents = await studentService.getAllStudents();
@@ -41,6 +44,7 @@ const StudentDetails = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     await studentService.updateStudent(student.id, student);
+    toggleEdit();
   };
 
   const toggleEdit = () => {
@@ -60,10 +64,14 @@ const StudentDetails = () => {
         <p>The updating info is Loading... available ({students?.length || 0} students)</p>
         <h2>Available student</h2>
         {students?.map((studn, index) => (
-          <p key={index}>
-            student {studn.id} {studn.first_name}
-          </p>
+          <React.Fragment key={studn.id}>
+            <a href={`/StudentDetails/${studn.id}`}>
+              student {studn.id} {studn.first_name}
+            </a>
+            <br />
+          </React.Fragment>
         ))}
+
       </div>
     );
   }
