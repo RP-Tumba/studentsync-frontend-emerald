@@ -1,25 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import StudentList from './pages/StudentList';
 import './App.css';
-import StudentDetails from './components/StudentDetails';
 
 const App = () => {
   return (
     <Router>
       <div className="app-container">
         <Navbar />
-   
         <main className="main-content">
-          <Routes>
-            { <Route path="/StudentDetails" element={<StudentDetails />} /> }
-            {/* <Route path="/" element={<StudentList />} /> */}
-
-          </Routes>
+          <Routes>{<Route path="/StudentList" element={<StudentList />} />}</Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );
 };
-
 export default App;
