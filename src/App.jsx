@@ -9,7 +9,6 @@ const App = () => {
     <Router>
       <div className="app-container">
         <Navbar />
-
         <main className="main-content">
           <Routes>{<Route path="/StudentList" element={<StudentList />} />}</Routes>
         </main>
