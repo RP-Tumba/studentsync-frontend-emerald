@@ -7,9 +7,10 @@ import StudentList from "./pages/StudentList";
 import Navbar from "./components/Navbar";
 
 import './App.css';
-import StudentDetails from './components/StudentDetails';
+
 
 const App = () => {
+  
   return (
     <Router>
       <div className="app-container">
@@ -19,9 +20,9 @@ const App = () => {
           <Routes>
 
             <Route path="/" element={<Home />} />
-            <Route path="/AddStudent" element={<AddStudent />} />
-            <Route path="/AllStudents" element={<AllStudents />} />
-   { <Route path="/StudentDetails" element={<StudentDetails />} /> }
+            <Route path="/create-student" element={<AddStudent />} />
+            <Route path="/students" element={<AllStudents />} />
+   {/* { <Route path="/StudentDetails" element={<StudentDetails />} /> } */}
 
           </Routes>
         </main>
