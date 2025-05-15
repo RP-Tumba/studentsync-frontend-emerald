@@ -13,6 +13,7 @@ const App = () => {
         <main className="main-content">
           <Routes>
             { <Route path="/StudentDetails/:id" element={<StudentDetails />} /> }
+            { <Route path="/StudentDetails/" element={<StudentDetails />} /> }
             {/* <Route path="/" element={<StudentList />} /> */}
 
           </Routes>
