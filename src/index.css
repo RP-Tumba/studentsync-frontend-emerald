@@ -330,6 +330,7 @@ text-align: center;
 #delete{
  color: crimson;
  border: none;
+ padding: 2px !important;
 }
 #delete:hover{
   background-color: lightcoral;
@@ -338,6 +339,7 @@ text-align: center;
 #edit{
   color: dodgerblue;
   border: none;
+  padding: 2px !important;
 }
 
 #edit:hover{
