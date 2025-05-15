@@ -9,9 +9,13 @@ const App = () => {
     <Router>
       <div className="app-container">
         <Navbar />
-        <StudentDetails />
+   
         <main className="main-content">
-          <Routes>{/* <Route path="/" element={<StudentList />} /> */}</Routes>
+          <Routes>
+            { <Route path="/StudentDetails" element={<StudentDetails />} /> }
+            {/* <Route path="/" element={<StudentList />} /> */}
+
+          </Routes>
         </main>
       </div>
     </Router>
