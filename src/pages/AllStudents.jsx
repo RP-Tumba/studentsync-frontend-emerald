@@ -52,7 +52,7 @@ const AllStudents = () => {
                 </td>
                 <td>{student.studentId}</td>
                 <td>{new Date(student.enrollmentDate).toDateString()}</td>
-                <td>{student.dateOfBirth}</td>
+                <td>{new Date(student.dateOfBirth).toDateString()}</td>
                 <td>{student.contactNumber}</td>
                 <td>{student.email}</td>
                 <td>
