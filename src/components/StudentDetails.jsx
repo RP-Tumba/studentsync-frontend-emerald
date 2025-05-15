@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import image from "../assets/image.jpeg";
 import { studentService } from "../lib/api.js";
+import { PiEnvelopeSimpleOpen } from "react-icons/pi";
+
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 const StudentDetails = () => {
   const [student, setStudent] = useState(null);
@@ -33,23 +36,13 @@ const StudentDetails = () => {
     }));
   };
 
+  console.log(student);
   const handleSubmit = async (e) => {
     e.preventDefault();
     await studentService.updateStudent(student.id, student);
   };
 
-  const toggleEdit = async () => {
-    if (isEditable) {
-      // Reset data when canceling edit
-      try {
-        const response = await studentService.getStudentById(
-          "6ffd453b-3673-4a7c-b20b-49a900145030",
-        );
-        setStudent(response.data);
-      } catch (err) {
-        console.error("Error resetting data:", err);
-      }
-    }
+  const toggleEdit = () => {
     setIsEditable((prev) => !prev);
   };
 
@@ -63,7 +56,10 @@ const StudentDetails = () => {
   if (!student) {
     return (
       <div className="loading">
-        <p>The updating info is Loading...</p>
+        <p>
+          The updating info is Loading... available ({students?.length || 0}{" "}
+          students)
+        </p>
         <h2>Available student</h2>
         {students?.map((studn, index) => (
           <p key={index}>
@@ -73,6 +69,7 @@ const StudentDetails = () => {
       </div>
     );
   }
+  console.log(student);
 
   return (
     <>
@@ -93,34 +90,30 @@ const StudentDetails = () => {
             <div className="inside-profile">
               <img src={image} alt="student" />
               <div className="inside2">
-                <h3>Name: {student.first_name}</h3>
-                <p>Email: {student.email}</p>
+                <h3>{student.firstName}</h3>
+                <p>{student.email}</p>
               </div>
             </div>
-          </div>
 
-          <form onSubmit={handleSubmit} className="all_fieldupdate">
-            {isEditable ? (
-              <button id="save-btn" className="edit-btn" type="submit">
-                Save
-              </button>
-            ) : (
+            <div>
               <button
-                className="updating-btn"
+                className={`updating-btn ${isEditable && "bg-red"}`}
                 id="edit-btn"
                 type="button"
                 onClick={toggleEdit}
               >
-                Edit
+                {isEditable ? "Cancel" : "Edit"}
               </button>
-            )}
+            </div>
+          </div>
 
+          <form onSubmit={handleSubmit} className="all_fieldupdate">
             <div className="first-name">
               <label>First Name</label>
               <input
-                name="first_name"
+                name="firstName"
                 type="text"
-                value={student.first_name}
+                value={student.firstName}
                 onChange={handleInputChange}
                 readOnly={!isEditable}
               />
@@ -129,9 +122,9 @@ const StudentDetails = () => {
             <div className="Last-name">
               <label>Last Name</label>
               <input
-                name="last_name"
+                name="lastName"
                 type="text"
-                value={student.last_name}
+                value={student.lastName}
                 onChange={handleInputChange}
                 readOnly={!isEditable}
               />
@@ -156,9 +149,9 @@ const StudentDetails = () => {
             <div className="Date-Of-Birth">
               <label>Date Of Birth</label>
               <input
-                name="date_of_birth"
+                name="dateOfBirth"
                 type="text"
-                value={student.date_of_birth}
+                value={student.dateOfBirth}
                 onChange={handleInputChange}
                 readOnly={!isEditable}
               />
@@ -167,9 +160,9 @@ const StudentDetails = () => {
             <div className="Contact-Number">
               <label>Contact Number</label>
               <input
-                name="contact_number"
+                name="contactNumber"
                 type="text"
-                value={student.contact_number}
+                value={student.contactNumber}
                 onChange={handleInputChange}
                 readOnly={!isEditable}
               />
@@ -178,31 +171,49 @@ const StudentDetails = () => {
             <div className="enrollement-date">
               <label>Enrollment Date</label>
               <input
-                name="enrollment_date"
+                name="enrollmentDate"
                 type="text"
-                value={student.enrollment_date}
+                value={student.enrollmentDate}
                 onChange={handleInputChange}
                 readOnly={!isEditable}
               />
             </div>
 
-            <div className="update-last">
-              <h5>My Email Address</h5>
-              <div className="last-profile">
-                <img src={image} alt="email profile" />
-                <div className="inside3">
-                  <h4>{student.email || "Loading..."}</h4>
-                  <p>2 months ago</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="update-btn">
-              <button className="update-back" type="button">
-                Go Back
-              </button>
+            <div className="text-right">
+              {isEditable && (
+                <button
+                  className="updating-btn"
+                  id="edit-btn"
+                  type="submit"
+                  onClick={toggleEdit}
+                >
+                  Save
+                </button>
+              )}
             </div>
           </form>
+
+          <div className="update-last">
+            <h5>My Email Address</h5>
+            <div className="last-profile">
+              <div className="update-last-logo">
+                <PiEnvelopeSimpleOpen size={20} />
+              </div>
+              <div className="inside3">
+                <h4>{student.email || "Loading..."}</h4>
+                <p className="text-sm">2 months ago</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="update-btn">
+            <button className="update-back" type="button">
+              <span className="back-arrow">
+                <KeyboardBackspaceIcon />
+              </span>
+              <span>Go back</span>
+            </button>
+          </div>
         </div>
       </div>
     </>
