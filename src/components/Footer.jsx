@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="middle-footer-content">
+        <div className="footer__contact">
           <h4 className="footer__heading">Contact us</h4>
           <p className="footer__info-item">
             <EmailOutlined /> info@thegymcapstone.rw
@@ -44,7 +44,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="right-footer-content">
+        <div className="footer__social">
           <h4 className="footer__heading">Social media</h4>
           <ul className="footer__social-list">
             <li>
