@@ -1,105 +1,95 @@
 
-.footer-main{
+.footer{
     display: flex;
     gap: 5rem;
     padding: 3rem 10rem;
     background-color: #F8FBFD;
     font-family: 'Poppins';
 }
-.left-footer-content h3{
-    color: #004B2F;
-    font-weight: 800;
-    font-size: 24px;
-}
-.paragraph1{
-    color: #83C727;
-    font-size: 16px;
-    font-weight: 500;
-}
-.footer-main h4{
-    color: #323232;
-    font-weight: 700;
-    margin-bottom: 13px;
-}
-.middle-footer-content .phone-icon{
-    transform: rotate(90deg);
-}
-.footer-main ul{
-    display: flex;
-    gap: 0.7rem;
-}
-.footer-main ul li{
-    list-style: none;
-}
-.address{
-    display: flex;
-    gap: 10px;
-    align-items: start;
-}
-
-.text-sm{
-    font-size: 14px;
-}
-.left-footer-content{
+.footer__brand{
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
-.right-footer-content{
-    width: 10%;
+.footer__brand-title{
+    color: #004B2F;
+    font-weight: 800;
+    font-size: 24px;
 }
-.footer-copy-content{
-    background-color: #F8FBFD;
-    text-align: center;
-    size: 16px;
-    font-family: 'Poppins';
-    padding: 1em;
+.footer__brand-tagline{
+    color: #83C727;
+    font-size: 16px;
+    font-weight: 500;
+}
+.footer__heading{
+    color: #323232;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+.footer__contact-icon--rotated{
+    transform: rotate(90deg);
+}
+.footer__social-list {
+  display: flex;
+  gap: 0.7rem;
+  list-style: none;
+}
+.footer__info-item {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+.footer__text-small {
+  font-size: 14px;
+}
+.footer__copyright {
+  background-color: #F8FBFD;
+  text-align: center;
+  size: 16px;
+  font-family: 'Poppins';
+  padding: 1em;
 }
 
 
 
-
-/* ---------------- Responsive Design ---------------- */
-
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .footer-main {
+  .footer {
     padding: 3rem 5rem;
     gap: 4rem;
-
   }
 }
 
 @media (max-width: 768px) {
-  .footer-main {
+  .footer {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .left-footer-content,
-  .middle-footer-content,
-  .right-footer-content {
+  .footer__brand,
+  .footer__contact,
+  .footer__social {
     width: 100%;
   }
 
-  .footer-main ul {
+  .footer__social-list {
     justify-content: flex-start;
   }
 }
 
 @media (max-width: 480px) {
-  .footer-main {
+  .footer {
     padding: 1.5rem;
     gap: 1.5rem;
   }
 
-  .footer-main ul {
+  .footer__social-list {
     flex-direction: row;
     gap: 0.5rem;
   }
 
-  .footer-copy-content {
+  .footer__copyright {
     font-size: 14px;
     padding: 1.5rem;
   }
-} 
-
+}

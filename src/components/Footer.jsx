@@ -13,40 +13,40 @@ import '../Footer.css';
 const Footer = () => {
   return (
     <div>
-      <div className="footer-main">
-        <div className="left-footer-content">
+      <div className="footer">
+        <div className="footer__brand">
           <div>
-            <h3>STUDENTSYNC MANAGEMENT APP</h3>
-            <p className="paragraph1">Student management platform</p>
+            <h3 className="footer__brand-title">STUDENTSYNC MANAGEMENT APP</h3>
+            <p className="footer__brand-tagline">Student management platform</p>
           </div>
-          <h4>Our Address</h4>
-          <div className="address">
+          <h4 className="footer__heading">Our Address</h4>
+          <div className="footer__info-item">
             <LocationOnOutlined size={20} />
 
-            <p className="text-sm">
+            <p className="footer__text-small">
               Gasabo District, Kinyinya Sector Murama Cell, Rusenyi Village KG 29 Ave 16, Kigali,
               Rwanda
             </p>
           </div>
-          <div className="address">
+          <div className="footer__info-item">
             <AccessTime size={14} />
             <p> Working Hours: Monday - Friday 08:00 - 17:00</p>
           </div>
         </div>
 
         <div className="middle-footer-content">
-          <h4>Contact us</h4>
-          <p className="address">
+          <h4 className="footer__heading">Contact us</h4>
+          <p className="footer__info-item">
             <EmailOutlined /> info@thegymcapstone.rw
           </p>
-          <p className="address">
-            <PhoneEnabledOutlined className="phone-icon" /> 0788-322-223
+          <p className="footer__info-item">
+            <PhoneEnabledOutlined className="footer__contact-icon--rotated" /> 0788-322-223
           </p>
         </div>
 
         <div className="right-footer-content">
-          <h4>Social media</h4>
-          <ul>
+          <h4 className="footer__heading">Social media</h4>
+          <ul className="footer__social-list">
             <li>
               <Instagram />
             </li>
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-copy-content">
+      <div className="footer__copyright">
         <p> &copy; Copyright Students. All Rights Reserved </p>
       </div>
     </div>
