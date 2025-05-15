@@ -3,14 +3,18 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StudentList from './pages/StudentList';
 import './App.css';
+
 const App = () => {
   return (
     <Router>
       <div className="app-container">
         <Navbar />
+   
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<StudentList />} />
+            { <Route path="/StudentDetails" element={<StudentDetails />} /> }
+            {/* <Route path="/" element={<StudentList />} /> */}
+
           </Routes>
         </main>
         <Footer />
