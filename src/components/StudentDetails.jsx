@@ -30,6 +30,7 @@ const StudentDetails = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setStudent((prev) => ({
       ...prev,
       [name]: value,
