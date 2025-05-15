@@ -1,20 +1,22 @@
+import Home from './pages/Home';
+import AddStudent from './pages/AddStudent';
+import AllStudents from './pages/Allstudents';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import StudentList from './pages/StudentList';
 import './App.css';
-import StudentDetails from './components/StudentDetails';
 
 const App = () => {
   return (
     <Router>
       <div className="app-container">
         <Navbar />
-   
+
         <main className="main-content">
           <Routes>
-            { <Route path="/StudentDetails" element={<StudentDetails />} /> }
-            {/* <Route path="/" element={<StudentList />} /> */}
-
+            <Route path="/" element={<Home />} />
+            <Route path="/create-students" element={<AddStudent />} />
+            <Route path="/students" element={<AllStudents />} />
           </Routes>
         </main>
       </div>
