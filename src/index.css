@@ -66,3 +66,28 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.form-container{
+  background-color:white;
+  align-items: center;
+  padding: 2rem;
+}
+.text-gray{
+  color: #004B2F;
+}
+.text-green{
+  color: #83C727;
+}
+.btn-bg-color{
+  background-color: #83C727;
+  color: white;
+}
+.form-up-header h1{
+  font-weight: 700;
+  font-size: 24px;
+}
+.form-inputs-style{
+  background-color: none;
+  border: 1px solid;
+}
+
+
