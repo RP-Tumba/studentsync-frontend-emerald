@@ -290,3 +290,57 @@ text-align: center;
   background-color: #83C727;
   color: #f1f1f1;
 }
+
+/****student list****/
+
+.responsive-table{
+  width: 100%;
+  overflow-x: auto;
+  background-color: white;
+  min-height: 100vh;
+  padding: 2em 0;
+}
+.responsive-table table{
+  width: 100%;
+  border: 0;
+  
+}
+
+.responsive-table table thead{
+  background-color: #c6f38b;
+
+}
+
+.responsive-table table thead tr th{
+  padding: 10px 0;
+}
+
+.responsive-table table tbody tr td{
+  border-bottom: 1px solid #cccc;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.responsive-table table tbody td .action{
+ display: flex ;
+ justify-content: center;
+ gap: 10px;
+}
+
+#delete{
+ color: crimson;
+ border: none;
+}
+#delete:hover{
+  background-color: lightcoral;
+  color: white;
+}
+#edit{
+  color: dodgerblue;
+  border: none;
+}
+
+#edit:hover{
+  background-color: dodgerblue;
+  color: white;
+}
