@@ -245,3 +245,8 @@ text-align: center;
 .pt{
   padding-top: 3rem;
 }
+
+.active{
+   color: #83C727;
+   font-weight: 700;
+}
