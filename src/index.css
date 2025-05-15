@@ -149,3 +149,11 @@ span{
      align-items: center;
      margin: 0 5px;
 }
+.loading{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  margin-top: 15%;
+}
