@@ -1,10 +1,12 @@
-import { IoLocationSharp } from 'react-icons/io5';
-import { FaClock } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
-import { FaPhone } from 'react-icons/fa';
-import { FaInstagram } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa';
-import { FaYoutube } from 'react-icons/fa';
+import {
+  LocationOnOutlined,
+  AccessTime,
+  EmailOutlined,
+  PhoneEnabledOutlined,
+  Instagram,
+  FacebookOutlined,
+} from '@mui/icons-material';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import '../Footer.css';
 
@@ -19,7 +21,7 @@ const Footer = () => {
           </div>
           <h4>Our Address</h4>
           <div className="address">
-            <IoLocationSharp size={20} />
+            <LocationOnOutlined size={20} />
 
             <p className="text-sm">
               Gasabo District, Kinyinya Sector Murama Cell, Rusenyi Village KG 29 Ave 16, Kigali,
@@ -27,7 +29,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="address">
-            <FaClock size={14} />
+            <AccessTime size={14} />
             <p> Working Hours: Monday - Friday 08:00 - 17:00</p>
           </div>
         </div>
@@ -35,10 +37,10 @@ const Footer = () => {
         <div className="middle-footer-content">
           <h4>Contact us</h4>
           <p className="address">
-            <MdEmail /> info@thegymcapstone.rw
+            <EmailOutlined /> info@thegymcapstone.rw
           </p>
           <p className="address">
-            <FaPhone className="phone-icon" /> 0788-322-223
+            <PhoneEnabledOutlined className="phone-icon" /> 0788-322-223
           </p>
         </div>
 
@@ -46,13 +48,13 @@ const Footer = () => {
           <h4>Social media</h4>
           <ul>
             <li>
-              <FaInstagram />
+              <Instagram />
             </li>
             <li>
-              <FaFacebook />
+              <FacebookOutlined />
             </li>
             <li>
-              <FaYoutube />
+              <YouTubeIcon />
             </li>
           </ul>
         </div>
