@@ -3,8 +3,8 @@ import Home from "./pages/Home";
 import AddStudent from "./pages/AddStudent";
 import AllStudents from "./pages/Allstudents";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import StudentList from './pages/StudentList';
+import StudentList from "./pages/StudentList";
+import AddStudent from "./pages/AddStudent";
 import './App.css';
 
 const App = () => {
