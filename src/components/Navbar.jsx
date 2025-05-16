@@ -23,7 +23,7 @@ const Navbar = () => {
       </div>
            <div className='nav-display-manu' onClick={navMenu}>
             &#9776;
-            {navData}
+        
             </div>    
       <div className="nav-right">
         <ul className={navData ? "active-nav":""}>
