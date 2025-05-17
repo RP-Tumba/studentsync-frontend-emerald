@@ -1,77 +1,106 @@
-import React, { useState, useEffect } from "react";
-import image from "../assets/image.jpeg";
-import { studentService } from "../lib/api.js";
-import { PiEnvelopeSimpleOpen } from "react-icons/pi";
-
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import React, { useState, useEffect } from 'react';
+import image from '../assets/image.jpeg';
+import { PiEnvelopeSimpleOpen } from 'react-icons/pi';
+import { useNavigate, useParams } from 'react-router-dom';
+import useStudentStore from '../store/studentStore';
+import { useForm } from 'react-hook-form';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const StudentDetails = () => {
-  const [student, setStudent] = useState(null);
+  const { id } = useParams();
   const [isEditable, setIsEditable] = useState(false);
-  const [students, setStudents] = useState(null);
+  const [message, setMessage] = useState(false);
+  const { student: studentDetails, updateStudent, getStudent, loading, error } = useStudentStore();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await studentService.getStudentById(
-          "6ffd453b-3673-4a7c-b20b-49a900145030",
-        );
-        setStudent(response.data);
-
-        const manyStudents = await studentService.getAllStudents();
-        setStudents(manyStudents.data);
-      } catch (err) {
-        console.error("Error:", err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setStudent((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  // console.log(student);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await studentService.updateStudent(student.id, student);
-  };
-
-  const toggleEdit = () => {
-    setIsEditable((prev) => !prev);
-  };
-
-  const currentTime = new Date().toLocaleDateString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const { register, handleSubmit, reset, formState } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      studentId: '',
+      email: '',
+      dateOfBirth: '',
+      contactNumber: '',
+      enrollmentDate: '',
+    },
   });
 
-  if (!student) {
-    return (
-      <div className="loading">
-        <p>
-          The updating info is Loading... available ({students?.length || 0}{" "}
-          students)
-        </p>
-        <h2>Available student</h2>
-        {students?.map((studn, index) => (
-          <p key={index}>
-            student {studn.id} {studn.first_name}
-          </p>
-        ))}
-      </div>
-    );
-  }
+  const { isDirty } = formState;
 
-  console.log(student);
+  useEffect(() => {
+    getStudent(id);
+  }, [getStudent, id]);
+
+  useEffect(() => {
+    if (studentDetails && Object.keys(studentDetails).length > 0) {
+      reset({
+        firstName: studentDetails.firstName || '',
+        lastName: studentDetails.lastName || '',
+        studentId: studentDetails.studentId || '',
+        email: studentDetails.email || '',
+        dateOfBirth: studentDetails.dateOfBirth || '',
+        contactNumber: studentDetails.contactNumber || '',
+        enrollmentDate: studentDetails.enrollmentDate || '',
+      });
+    }
+  }, [studentDetails, reset]);
+
+  const toggleEdit = () => {
+    if (isEditable) {
+      reset({
+        firstName: studentDetails.firstName || '',
+        lastName: studentDetails.lastName || '',
+        studentId: studentDetails.studentId || '',
+        email: studentDetails.email || '',
+        dateOfBirth: studentDetails.dateOfBirth || '',
+        contactNumber: studentDetails.contactNumber || '',
+        enrollmentDate: studentDetails.enrollmentDate || '',
+      });
+    }
+    setIsEditable(prev => !prev);
+  };
+
+  const currentTime = new Date().toLocaleDateString('en-US', {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  const onSubmit = async data => {
+    if (!isDirty) {
+      setMessage(true);
+      setTimeout(() => setMessage(false), 3000);
+      return;
+    }
+    const { firstName, lastName, email, contactNumber } = data;
+
+    await updateStudent(id, { firstName, lastName, email, contactNumber });
+    setIsEditable(false);
+    navigate('/students');
+  };
+  const goBack = () => {
+    navigate('/students');
+  };
+
+  if (loading)
+    return (
+      <>
+        <div className="loading-container">
+          <div className="loading"></div>
+          <p>loading...</p>
+        </div>
+      </>
+    );
+  if (error)
+    return (
+      <>
+        <div className="loading-container">
+          <p className="error-message">{error}</p>
+        </div>
+      </>
+    );
+
   return (
     <>
       <div className="head">
@@ -91,103 +120,63 @@ const StudentDetails = () => {
             <div className="inside-profile">
               <img src={image} alt="student" />
               <div className="inside2">
-                <h3>{student.firstName}</h3>
-                <p>{student.email}</p>
+                <h3>{studentDetails?.firstName || ''}</h3>
+                <p>{studentDetails?.email || ''}</p>
               </div>
             </div>
 
             <div>
               <button
-                className={`updating-btn ${isEditable && "bg-red"}`}
+                className={`updating-btn ${isEditable ? 'bg-red' : ''}`}
                 id="edit-btn"
                 type="button"
                 onClick={toggleEdit}
               >
-                {isEditable ? "Cancel" : "Edit"}
+                {isEditable ? 'Cancel' : 'Edit'}
               </button>
             </div>
           </div>
+          {message && <div className="no-change-msg">No changes were made.</div>}
 
-          <form onSubmit={handleSubmit} className="all_fieldupdate">
-            <div className="first-name">
+          <form onSubmit={handleSubmit(onSubmit)} className="all_fieldupdate">
+            <div>
               <label>First Name</label>
-              <input
-                name="firstName"
-                type="text"
-                value={student.firstName}
-                onChange={handleInputChange}
-                readOnly={!isEditable}
-              />
+              <input type="text" {...register('firstName')} readOnly={!isEditable} />
             </div>
 
-            <div className="Last-name">
+            <div>
               <label>Last Name</label>
-              <input
-                name="lastName"
-                type="text"
-                value={student.lastName}
-                onChange={handleInputChange}
-                readOnly={!isEditable}
-              />
+              <input type="text" {...register('lastName')} readOnly={!isEditable} />
             </div>
 
-            <div className="Student-ID">
+            <div>
               <label>Student ID</label>
-              <input name="id" type="text" value={student.id} readOnly />
+              <input type="text" {...register('studentId')} readOnly />
             </div>
 
-            <div className="Email">
+            <div>
               <label>Email</label>
-              <input
-                name="email"
-                type="text"
-                value={student.email}
-                onChange={handleInputChange}
-                readOnly={!isEditable}
-              />
+              <input type="email" {...register('email')} readOnly={!isEditable} />
             </div>
 
-            <div className="Date-Of-Birth">
+            <div>
               <label>Date Of Birth</label>
-              <input
-                name="dateOfBirth"
-                type="text"
-                value={student.dateOfBirth}
-                onChange={handleInputChange}
-                readOnly={!isEditable}
-              />
+              <input type="text" {...register('dateOfBirth')} readOnly />
             </div>
 
-            <div className="Contact-Number">
+            <div>
               <label>Contact Number</label>
-              <input
-                name="contactNumber"
-                type="text"
-                value={student.contactNumber}
-                onChange={handleInputChange}
-                readOnly={!isEditable}
-              />
+              <input type="text" {...register('contactNumber')} readOnly={!isEditable} />
             </div>
 
-            <div className="enrollement-date">
+            <div>
               <label>Enrollment Date</label>
-              <input
-                name="enrollmentDate"
-                type="text"
-                value={student.enrollmentDate}
-                onChange={handleInputChange}
-                readOnly={!isEditable}
-              />
+              <input type="text" {...register('enrollmentDate')} readOnly />
             </div>
 
             <div className="text-right">
               {isEditable && (
-                <button
-                  className="updating-btn"
-                  id="edit-btn"
-                  type="submit"
-                  onClick={toggleEdit}
-                >
+                <button className="updating-btn" id="edit-btn" type="submit">
                   Save
                 </button>
               )}
@@ -201,14 +190,14 @@ const StudentDetails = () => {
                 <PiEnvelopeSimpleOpen size={20} />
               </div>
               <div className="inside3">
-                <h4>{student.email || "Loading..."}</h4>
+                <h4>{studentDetails?.email || 'Loading...'}</h4>
                 <p className="text-sm">2 months ago</p>
               </div>
             </div>
           </div>
 
           <div className="update-btn">
-            <button className="update-back" type="button">
+            <button className="update-back" type="button" onClick={goBack}>
               <span className="back-arrow">
                 <KeyboardBackspaceIcon />
               </span>

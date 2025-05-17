@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { create } from "zustand";
-import { studentService } from "../lib/api";
+import { create } from 'zustand';
+import { studentService } from '../lib/api';
 
 const useStudentStore = create((set, get) => ({
   students: [],
@@ -15,7 +15,7 @@ const useStudentStore = create((set, get) => ({
       const response = await studentService.getAllStudents();
 
       if (response.success) {
-        set({ students: response.data, loading: false });
+        set({ student: response.data, loading: false });
       } else {
         set({ error: response.message, loading: false });
       }
@@ -25,13 +25,23 @@ const useStudentStore = create((set, get) => ({
   },
 
   // Get single student
-  getStudent: async (id) => {
+  getStudent: async id => {
     set({ loading: true, error: null });
-    // implementation goes here
+    try {
+      const response = await studentService.getStudentById(id);
+
+      if (response.success) {
+        set({ student: response.data, loading: false });
+      } else {
+        set({ error: response.message, loading: false });
+      }
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
   },
 
   // Add student
-  addStudent: async (studentData) => {
+  addStudent: async studentData => {
     set({ loading: true, error: null });
     // implementation goes here
   },
@@ -39,19 +49,29 @@ const useStudentStore = create((set, get) => ({
   // Update student
   updateStudent: async (id, studentData) => {
     set({ loading: true, error: null });
-    // implementation goes here
+    try {
+      const response = await studentService.updateStudent(id, studentData);
+      if (response.success) {
+        set({ student: response.data, loading: false });
+        console.log(response.data);
+      } else {
+        set({ error: response.message, loading: false });
+      }
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
   },
 
   // Delete student
-  deleteStudent: async (id) => {
+  deleteStudent: async id => {
     set({ loading: true, error: null });
     // implementation goes here
   },
 
-  searchStudents: async (query) => {
-    set({loading: true, error: null})
+  searchStudents: async query => {
+    set({ loading: true, error: null });
     // Implementation goes here
-  }
+  },
 }));
 
 export default useStudentStore;
