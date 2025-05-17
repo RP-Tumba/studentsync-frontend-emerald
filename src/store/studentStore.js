@@ -15,7 +15,7 @@ const useStudentStore = create((set, get) => ({
       const response = await studentService.getAllStudents();
 
       if (response.success) {
-        set({ students: response.data, loading: false });
+        set({ student: response.data, loading: false });
       } else {
         set({ error: response.message, loading: false });
       }
@@ -27,7 +27,17 @@ const useStudentStore = create((set, get) => ({
   // Get single student
   getStudent: async id => {
     set({ loading: true, error: null });
-    // implementation goes here
+    try {
+      const response = await studentService.getStudentById(id);
+
+      if (response.success) {
+        set({ student: response.data, loading: false });
+      } else {
+        set({ error: response.message, loading: false });
+      }
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
   },
 
   // Add student
@@ -51,7 +61,17 @@ const useStudentStore = create((set, get) => ({
   // Update student
   updateStudent: async (id, studentData) => {
     set({ loading: true, error: null });
-    // implementation goes here
+    try {
+      const response = await studentService.updateStudent(id, studentData);
+      if (response.success) {
+        set({ student: response.data, loading: false });
+        console.log(response.data);
+      } else {
+        set({ error: response.message, loading: false });
+      }
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
   },
 
   // Delete student
