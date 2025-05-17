@@ -13,6 +13,9 @@ import Footer from './components/Footer';
 import StudentList from './pages/StudentList';
 import './App.css';
 
+// import StudentDetails from './components/StudentDetails';
+import CreateForm from './pages/CreateForm';
+
 
 const App = () => {
   
@@ -20,6 +23,12 @@ const App = () => {
     <Router>
       <div className="app-container">
         <Navbar />
+
+   <CreateForm/>
+        <main className="main-content">
+          <Routes>
+            {/* <Route path="/StudentDetails" element={<StudentDetails />} />  */}
+
 
         <main className="main-content">
           <Routes>
@@ -32,6 +41,7 @@ const App = () => {
 
             {<Route path="/students/:id" element={<StudentDetails />} />}
             {<Route path="/students" element={<StudentList />} />}
+
             <Route path="/" element={<StudentList />} />
 
           </Routes>

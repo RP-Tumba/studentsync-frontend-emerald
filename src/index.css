@@ -260,6 +260,82 @@ font-weight: 700;
   color: #686868;
   font-weight: 500;
 }
+
+.form-container{
+  background-color:white;
+  padding: 2rem;
+  margin-left:20rem;
+  margin-top: 4rem;
+  border-radius: 15px;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.text-gray{
+  color: #004B2F;
+}
+.text-green{
+  color: #83C727;
+}
+.btn-bg-color{
+  background-color: #83C727;
+  color: white;
+}
+.form-up-header h1{
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+.form-header{
+  background-color: #EBF9DA;
+  padding: 1.5rem;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+margin-bottom: 2rem;
+  
+}
+.form-header h3{
+  text-align: center;
+
+}
+form input {
+  background-color:white;
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
+  height: 2rem;
+
+}
+.form-inputs-large{
+ width: 100%;
+}
+.form-inputs-up{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+label{
+  font-style: inherit;
+  font-weight: bold;
+  font-size: 14px;
+}
+.form-btn{
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding-top: 2rem;
+  margin-left: 4rem;
+  outline: none;
+}
+.form-btn-style-green{
+  background-color: #83C727;
+  color: white;
+}
+.form-btn-style-white{
+  background-color:white;
+  border: 2px solid #83C727;
+  color:#83C727;
+}
+
+
 .btn-outline-green{
   background-color: white;
   border: 2px solid ;
@@ -304,4 +380,5 @@ cursor: pointer;
    color: #83C727 !important;
    font-weight: 700;
 }
+
 
