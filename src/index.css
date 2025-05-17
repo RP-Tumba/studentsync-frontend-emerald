@@ -1,68 +1,192 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  body{
+    background: #f4f1f1; 
+  }
+  .head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    width: 90%;
+    margin: auto;
+  }
+  .left-head{
+    font-family: arial;
+    margin-left: 2px;
+    line-height: 0.50;
+  }
+  .right-head{
+     margin-right: 5px;
+  }
+  .right-head input{
+    outline: none;
+    padding: 3px;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  }
+  .main-update{
+      width: 90%;
+      margin: auto;
+      line-height: 0.50;
+      margin-top: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      background: #ffffff;
+    
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  }
+  .student-update-main{
+    width: 80%;
+    margin: auto;
+  }
+  .head-color{
+   border: 1px solid grey;
+   padding: 1.5em;
+   border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-image: linear-gradient(to right,#82c727,#a9ff389a);
+  }
+  .profile-student{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1em;
+    }
+  .profile-student img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+     margin: 0 10px;
+     
+  }
+  .inside-profile{
+    display: flex;
+  }
+  .edit-btn{
+  width: 20%;
+  text-align: center;
+  }
+
+  .updating-btn{
+    padding: 7px 25px;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid grey;
+    background: #83c727;
+    cursor: pointer;
+  }
+  label{
+    display: block;
+    margin-bottom:0.80em;
+  }
+  .all_fieldupdate input{
+   padding: 8px  5px;
+   width: 100%;
+   background-color: #F9F9F9;
+   outline: none;
+   border: 1px solid #f4f1f1;
+   border-radius: 5px;
+
+  }
+  .all_fieldupdate{
+    margin-top: 20px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2em;
+    justify-content: center;
+    align-items: end;
+  }
+  .no-change-msg {
+  color: red;
+  background-color: #ffe5e5;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+  
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+
+  .update-last-logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+     margin: 0 10px;
+     color: #82c727;
+     background-color: aliceblue;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  }
+  .update-last h5{
+    margin-left: 1em;
+    font-size: 16px;
+  }
+  .last-profile{
+ display: flex;
+ align-items: center;
+  }
+  .inside3{
+    line-height: 0.30;
+  }
+  .update-btn{
+    border: 2px solid white;
+    
+  }
+  .update-back{
+    padding:0.50em 3em;
+    margin: 2rem;
+    color: #82c727;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    cursor: pointer;
+  }
+  .text-sm{
+    font-size: 14px;
+  }
+.text-right{
+  text-align: right;
 }
 
-body {
-  margin: 0;
+.bg-red{
+  background-color: rgb(251, 10, 58);
+}
+span{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 0 5px;
+}
+.loading-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.loading {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #000;
+  border-radius: 50%;
+  animation: spinning 1s linear infinite;
 }
 
-button {
+@keyframes spinning {
+  to { transform: rotate(360deg); }
+}
+.error-message {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 10px 20px;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: 1px solid red;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}

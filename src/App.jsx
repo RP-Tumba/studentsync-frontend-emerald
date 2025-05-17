@@ -9,8 +9,16 @@ const App = () => {
     <Router>
       <div className="app-container">
         <Navbar />
+
+        <main className="main-content">
+          <Routes>
+            {<Route path="/students/:id" element={<StudentDetails />} />}
+            {<Route path="/students" element={<StudentList />} />}
+            <Route path="/" element={<StudentList />} />
+          </Routes>
         <main className="main-content">
           <Routes>{<Route path="/StudentList" element={<StudentList />} />}</Routes>
+
         </main>
         <Footer />
       </div>
