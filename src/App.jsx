@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import StudentList from './pages/StudentList';
 import './App.css';
-import StudentDetails from './components/StudentDetails';
 
 const App = () => {
   return (
@@ -16,10 +16,13 @@ const App = () => {
             {<Route path="/students" element={<StudentList />} />}
             <Route path="/" element={<StudentList />} />
           </Routes>
+        <main className="main-content">
+          <Routes>{<Route path="/StudentList" element={<StudentList />} />}</Routes>
+
         </main>
+        <Footer />
       </div>
     </Router>
   );
 };
-
 export default App;
