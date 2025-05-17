@@ -33,7 +33,19 @@ const useStudentStore = create((set, get) => ({
   // Add student
   addStudent: async studentData => {
     set({ loading: true, error: null });
-    // implementation goes here
+    
+    try {
+      const response = await studentService.createStudent(studentData);
+
+      if (response.success) {
+        set({ students: response.data, loading: false });
+      } else {
+        set({ error: response.message, loading: false });
+      }
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
+
   },
 
   // Update student
