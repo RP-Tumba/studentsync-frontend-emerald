@@ -6,6 +6,7 @@ import { dark } from '@mui/material/styles/createPalette';
 
 
 const Navbar = () => {
+
   const [navData, setNavData] = useState(false)
   const navMenu = ()=>{
     setNavData(!navData ? true: false)
@@ -44,6 +45,9 @@ const Navbar = () => {
       </div>
     </div>
   );
+
+  return <nav></nav>;
+
 };
 
 export default Navbar;
