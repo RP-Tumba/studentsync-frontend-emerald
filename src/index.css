@@ -602,9 +602,6 @@ input[type="number"] {
   color: #f1f1f1;
 }
 
-.gap-2{
-  gap: 10px !important;
-}
 @media (max-width: 720px){
   .intro{
     display: block;
@@ -721,7 +718,7 @@ input[type="number"] {
 
 .modal-overlay{
   z-index: 1000;
-
+}
 .d-flex{
   display: flex;
 }
