@@ -17,7 +17,7 @@ const AllStudents = () => {
     try {
       const data = await studentService.deleteStudent(id);
       if (data) fetchStudents();
-      alert('Data alredy deleted');
+      alert('Student deleted successfully..');
     } catch {
       console.log(error);
     }
@@ -54,22 +54,21 @@ const AllStudents = () => {
           <table cellPadding={0} cellSpacing={0} className="student-table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Full Name</th>
                 <th>Student ID</th>
                 <th>Enrollment Date</th>
-                <th>Date of Birth</th>
+                <th>Date Birth</th>
                 <th>Contact</th>
                 <th>Email</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {students.map(student => (
+              {students.map((student, index) => (
                 <tr key={student.id}>
+                  <td>{index + 1}</td>
                   <td>
-                    {student.firstName.charAt(0).toUpperCase()}
-                    {student.lastName.charAt(0).toUpperCase()} &nbsp;&nbsp;&nbsp;
                     {student.firstName} {student.lastName}
                   </td>
                   <td>{student.studentId}</td>

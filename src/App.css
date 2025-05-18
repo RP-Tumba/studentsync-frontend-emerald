@@ -137,7 +137,7 @@ body {
   box-shadow: 0 4px 6px rgba(107, 70, 193, 0.06);
 
   border: 1px solid rgba(107, 70, 193, 0.1);
-  height: 80vh;
+  height: 100vh;
   overflow-y: auto;
 }
 
