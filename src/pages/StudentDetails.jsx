@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import image from '../assets/image.jpeg';
+import { useState, useEffect } from 'react';
 import { PiEnvelopeSimpleOpen } from 'react-icons/pi';
 import { useNavigate, useParams } from 'react-router-dom';
 import useStudentStore from '../store/studentStore';
@@ -60,13 +59,6 @@ const StudentDetails = () => {
     setIsEditable(prev => !prev);
   };
 
-  const currentTime = new Date().toLocaleDateString('en-US', {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
   const onSubmit = async data => {
     if (!isDirty) {
       setMessage(true);
@@ -103,22 +95,15 @@ const StudentDetails = () => {
 
   return (
     <>
-      <div className="head">
-        <div className="left-head">
-          <h3>Welcome</h3>
-          <p>{currentTime}</p>
-        </div>
-        <div className="right-head">
-          <input type="text" placeholder="Search" />
-        </div>
-      </div>
-
       <div className="main-update">
         <div className="head-color"></div>
         <div className="student-update-main">
           <div className="profile-student">
-            <div className="inside-profile">
-              <img src={image} alt="student" />
+            <div className="inside-profile items-center">
+              <img
+                src={`https://ui-avatars.com/api/?name=${studentDetails?.firstName}&background=83C727&color=fff`}
+                alt="student"
+              />
               <div className="inside2">
                 <h3>{studentDetails?.firstName || ''}</h3>
                 <p>{studentDetails?.email || ''}</p>
@@ -183,13 +168,13 @@ const StudentDetails = () => {
             </div>
           </form>
 
-          <div className="update-last">
+          <div className="update-last pt">
             <h5>My Email Address</h5>
-            <div className="last-profile">
+            <div className="last-profile py-2">
               <div className="update-last-logo">
                 <PiEnvelopeSimpleOpen size={20} />
               </div>
-              <div className="inside3">
+              <div>
                 <h4>{studentDetails?.email || 'Loading...'}</h4>
                 <p className="text-sm">2 months ago</p>
               </div>

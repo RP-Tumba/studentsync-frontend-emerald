@@ -1,14 +1,16 @@
 import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 import { studentService } from '../lib/api';
+import { useEffect, useState } from 'react';
+import AddStudentModal from './AddStudent';
+
+import { Link } from 'react-router-dom';
 const AllStudents = () => {
   const { students, fetchStudents, loading, error } = useStudentStore();
+  const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     fetchStudents();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDelete = async id => {
@@ -26,37 +28,40 @@ const AllStudents = () => {
 
   return (
     <div className="container">
+      {showAddModal && <AddStudentModal onClose={() => setShowAddModal(false)} />}
+
       <div className="student-list">
         <div className="flex justify-between items-center student-list-header">
-          <h1 className="text-green text-md">All students</h1>
-          <div className="flex items-center">
-            <div className="search  items-center">
-              <label htmlFor="search-input">
-                <Search className="icon" />
-              </label>
+          <h1 className="text-green text-md">All Students</h1>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center fix-search px-2">
               <div>
-                <input type="text" placeholder="Search...." name="term" id="search-input" />
+                <Search className="icon" />
+              </div>
+              <div>
+                <input type="text" placeholder="Search..." name="term" />
               </div>
             </div>
             <div className="addStudent">
-              <Link to="/create-student" class="btn">
+              <Link to="/create-student" className="fix-btn px-2 py-2 rounded bg-green text-white">
                 Add Student
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="">
+        <div className="student-table-wrapper">
           <table cellPadding={0} cellSpacing={0} className="student-table">
             <thead>
               <tr>
-                <th>Username</th>
+                <th>ID</th>
+                <th>Full Name</th>
                 <th>Student ID</th>
                 <th>Enrollment Date</th>
-                <th>Date Birth</th>
-                <th>Contact Number</th>
+                <th>Date of Birth</th>
+                <th>Contact</th>
                 <th>Email</th>
-                <th>Action</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -77,6 +82,7 @@ const AllStudents = () => {
                       <button onClick={() => handleDelete(student.studentId)} id="delete">
                         <Delete />
                       </button>
+
                       <Link to={`/students/${student.id}`} id="edit">
                         <Edit />
                       </Link>
@@ -84,6 +90,14 @@ const AllStudents = () => {
                   </td>
                 </tr>
               ))}
+
+              {!loading && students.length === 0 && (
+                <tr>
+                  <td colSpan="8" style={{ textAlign: 'center' }}>
+                    No students found.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -91,4 +105,5 @@ const AllStudents = () => {
     </div>
   );
 };
+
 export default AllStudents;
