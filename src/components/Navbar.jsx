@@ -2,8 +2,6 @@ import { useState } from 'react';
 import logo from '../assets/logo-smait.png';
 import { NavLink } from 'react-router-dom';
 
-// import MenuIcon from '@material-ui/icons/Menu';
-
 const Navbar = () => {
   const [navData, setNavData] = useState(false);
   const navMenu = () => {

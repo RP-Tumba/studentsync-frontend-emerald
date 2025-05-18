@@ -1,34 +1,33 @@
-
-.footer{
-    display: flex;
-    gap: 5rem;
-    padding: 3rem 10rem;
-    background-color: #F8FBFD;
-    font-family: 'Poppins';
-    width: 100%;
+.footer {
+  display: flex;
+  gap: 5rem;
+  padding: 3rem 10rem;
+  background-color: #f8fbfd;
+  font-family: 'Poppins';
+  width: 100%;
 }
-.footer__brand{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
-.footer__brand-title{
-    color: #004B2F;
-    font-weight: 800;
-    font-size: 24px;
+.footer__brand-title {
+  color: #004b2f;
+  font-weight: 800;
+  font-size: 24px;
 }
-.footer__brand-tagline{
-    color: #83C727;
-    font-size: 16px;
-    font-weight: 500;
+.footer__brand-tagline {
+  color: #83c727;
+  font-size: 16px;
+  font-weight: 500;
 }
-.footer__heading{
-    color: #323232;
-    font-weight: 700;
-    margin-bottom: 13px;
+.footer__heading {
+  color: #323232;
+  font-weight: 700;
+  margin-bottom: 13px;
 }
-.footer__contact-icon--rotated{
-    transform: rotate(90deg);
+.footer__contact-icon--rotated {
+  transform: rotate(90deg);
 }
 .footer__social-list {
   display: flex;
@@ -44,14 +43,12 @@
   font-size: 14px;
 }
 .footer__copyright {
-  background-color: #F8FBFD;
+  background-color: #f8fbfd;
   text-align: center;
   size: 16px;
   font-family: 'Poppins';
   padding: 1em 4em;
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 1024px) {
