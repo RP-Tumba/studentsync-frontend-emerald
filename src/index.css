@@ -601,3 +601,44 @@ text-align: center;
 }
 
 
+.text-md{
+  font-size: 2em;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-between;
+}
+.gap-2{
+  gap: 1em;
+}
+.items-center{
+  align-items: center;
+}
+
+.search{
+  display: flex;
+  align-items: center;
+  border: 1px solid #f1f1f1;
+  padding: 5px 5px;
+  background-color: rgb(239, 240, 242);
+  border-radius: 5px;
+  justify-content: center;
+  
+}
+.search input{
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  
+}
+.search div{
+  flex:1
+}
+.search .icon{
+  color: #686868;
+}
+
+
