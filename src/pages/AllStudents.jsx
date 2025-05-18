@@ -2,6 +2,7 @@ import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { studentService } from '../lib/api';
 const AllStudents = () => {
   const { students, fetchStudents, loading, error } = useStudentStore();
 
@@ -9,6 +10,16 @@ const AllStudents = () => {
     fetchStudents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleDelete = async id => {
+    try {
+      const data = await studentService.deleteStudent(id);
+      if (data) fetchStudents();
+      alert('Data alredy deleted');
+    } catch {
+      console.log(error);
+    }
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -52,6 +63,8 @@ const AllStudents = () => {
               {students.map(student => (
                 <tr key={student.id}>
                   <td>
+                    {student.firstName.charAt(0).toUpperCase()}
+                    {student.lastName.charAt(0).toUpperCase()} &nbsp;&nbsp;&nbsp;
                     {student.firstName} {student.lastName}
                   </td>
                   <td>{student.studentId}</td>
@@ -61,7 +74,7 @@ const AllStudents = () => {
                   <td>{student.email}</td>
                   <td>
                     <div className="action flex">
-                      <button id="delete">
+                      <button onClick={() => handleDelete(student.studentId)} id="delete">
                         <Delete />
                       </button>
                       <Link to={`/students/${student.id}`} id="edit">
