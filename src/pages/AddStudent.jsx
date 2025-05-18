@@ -1,81 +1,85 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import useStudentStore from '../store/studentStore';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const AddStudent = () => {
-  const { error, addStudent } = useStudentStore();
-  const { register, handleSubmit } = useForm();
+const AddStudentModal = ({ onClose }) => {
+  const { addStudent } = useStudentStore();
+  const { register, handleSubmit, reset } = useForm();
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = async data => {
-    await addStudent(data);
+    setLoading(true);
+    try {
+      await addStudent(data);
+      toast.success('Student added successfully!');
+      reset();
+      onClose();
+    } catch (e) {
+      toast.error('Failed to add student.');
+      console.log(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div>
-      {error}
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-header">
-          <div className="form-up-header">
-            <h1 className="text-gray">STUDENTSYNC</h1>
-          </div>
-          <br />
-          <h3>Add new student</h3>
-        </div>
-        <div className="form-inputs">
-          <div className="form-inputs-up">
-            <div>
-              <label>First Name</label>
-              <br />
-              <input type="text" {...register('firstName')} />
-              <br />
-            </div>
+    <div className="modal-overlay">
+      <ToastContainer />
+      <form className="modal-form" onSubmit={handleSubmit(onSubmit)}>
+        <button className="close-button" onClick={onClose} type="button">
+          &times;
+        </button>
+        <h2 className="modal-title">STUDENTSYNC</h2>
+        <p className="modal-subtitle">Add new student</p>
 
-            <div>
-              <label>Data Of Brith</label>
-              <br />
-              <input type="date" {...register('dateOfBirth')} />
-              <br />
-            </div>
-            <div>
-              <label>Last Name</label>
-              <br />
-              <input type="text" {...register('lastName')} />
-              <br />
-            </div>
-            <div>
-              <label>Student ID</label> <br />
-              <input type="text" {...register('studentId')} />
-              <br />
-            </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label>First Name</label>
+            <input type="text" {...register('firstName')} required />
           </div>
-          <div>
-            <label>Email</label>
-            <br />
-            <input type="email" {...register('email')} className="form-inputs-large" />
-            <br />
-          </div>
-          <div>
-            <label>Contact Number</label>
-            <br />
-            <input type="number" {...register('contactNumber')} className=" form-inputs-large" />
-            <br />
-          </div>
-          <div>
-            <label>enrollment date</label>
-            <br />
-            <input type="date" {...register('enrollmentDate')} className="form-inputs-large" />
+          <div className="form-group">
+            <label>Last Name</label>
+            <input type="text" {...register('lastName')} required />
           </div>
         </div>
-        <div className="form-btn">
-          <div>
-            <button type="submit" className="form-btn-style-green">
-              Add
-            </button>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label>Date Of Birth</label>
+            <input type="date" {...register('dateOfBirth')} required />
           </div>
-          <div>
-            <button className="form-btn-style-white">Cancel</button>
+          <div className="form-group">
+            <label>Student ID</label>
+            <input type="text" {...register('studentId')} required />
           </div>
+        </div>
+
+        <div className="form-group">
+          <label>Email</label>
+          <input type="email" {...register('email')} required />
+        </div>
+        <div className="form-group">
+          <label>Contact Number</label>
+          <input type="number" {...register('contactNumber')} required />
+        </div>
+        <div className="form-group">
+          <label>Enrollment Date</label>
+          <input type="date" {...register('enrollmentDate')} required />
+        </div>
+
+        <div className="form-buttons">
+          <button type="submit" disabled={loading} className="btn green">
+            {loading ? 'Adding...' : 'Add'}
+          </button>
+          <button type="button" onClick={onClose} className="btn white">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
   );
 };
-export default AddStudent;
+
+export default AddStudentModal;
