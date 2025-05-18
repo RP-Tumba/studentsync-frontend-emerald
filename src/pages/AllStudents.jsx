@@ -1,28 +1,30 @@
 import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
-
+import { studentService } from '../lib/api';
 import { useEffect, useState } from 'react';
 import AddStudentModal from './AddStudent';
 
 import { Link } from 'react-router-dom';
-
 const AllStudents = () => {
-  const { students, fetchStudents, loading } = useStudentStore();
+  const { students, fetchStudents, loading, error } = useStudentStore();
   const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     fetchStudents();
   }, []);
 
-  if (loading)
-    return (
-      <div className="">
-        <div className="loading-container">
-          <div className="loading"></div>
-          <p>loading...</p>
-        </div>
-      </div>
-    );
+  const handleDelete = async id => {
+    try {
+      const data = await studentService.deleteStudent(id);
+      if (data) fetchStudents();
+      alert('Data alredy deleted');
+    } catch {
+      console.log(error);
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="container">
@@ -66,6 +68,8 @@ const AllStudents = () => {
               {students.map(student => (
                 <tr key={student.id}>
                   <td>
+                    {student.firstName.charAt(0).toUpperCase()}
+                    {student.lastName.charAt(0).toUpperCase()} &nbsp;&nbsp;&nbsp;
                     {student.firstName} {student.lastName}
                   </td>
                   <td>{student.studentId}</td>
@@ -74,8 +78,8 @@ const AllStudents = () => {
                   <td>{student.contactNumber}</td>
                   <td>{student.email}</td>
                   <td>
-                    <div className="action-buttons flex">
-                      <button className="btn-action delete" id="delete">
+                    <div className="action flex">
+                      <button onClick={() => handleDelete(student.studentId)} id="delete">
                         <Delete />
                       </button>
 
