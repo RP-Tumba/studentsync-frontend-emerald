@@ -1,7 +1,7 @@
 import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
 import { useEffect, useState } from 'react';
-import AddStudentModal from './AddStudent'; // Make sure path is correct
+import AddStudentModal from './AddStudent';
 
 const AllStudents = () => {
   const { students, fetchStudents } = useStudentStore();
@@ -9,12 +9,14 @@ const AllStudents = () => {
 
   useEffect(() => {
     fetchStudents();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const closeModal = () => {
+    setShowAddModal(prev => !prev);
+  };
   return (
     <div className="container">
-      {showAddModal && <AddStudentModal onClose={() => setShowAddModal(false)} />}
+      {showAddModal && <AddStudentModal onClose={closeModal} />}
 
       <div className="student-list">
         <div className="flex justify-between items-center student-list-header">

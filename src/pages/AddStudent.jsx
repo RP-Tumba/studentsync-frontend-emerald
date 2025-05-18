@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useStudentStore from '../store/studentStore';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddStudentModal = ({ onClose }) => {
+  const navigate = useNavigate();
   const { addStudent } = useStudentStore();
   const { register, handleSubmit, reset } = useForm();
   const [loading, setLoading] = useState(false);
@@ -24,11 +26,15 @@ const AddStudentModal = ({ onClose }) => {
     }
   };
 
+  const handleCancel = () => {
+    navigate('/students');
+  };
+
   return (
     <div className="modal-overlay">
       <ToastContainer />
       <form className="modal-form" onSubmit={handleSubmit(onSubmit)}>
-        <button className="close-button" onClick={onClose} type="button">
+        <button className="close-button" onClick={handleCancel} type="button">
           &times;
         </button>
         <h2 className="modal-title">STUDENTSYNC</h2>
@@ -73,7 +79,7 @@ const AddStudentModal = ({ onClose }) => {
           <button type="submit" disabled={loading} className="btn green">
             {loading ? 'Adding...' : 'Add'}
           </button>
-          <button type="button" onClick={onClose} className="btn white">
+          <button type="button" onClick={handleCancel} className="btn white">
             Cancel
           </button>
         </div>
