@@ -17,7 +17,7 @@ const Home = () => {
           <h1 className="font-bold text-gray">STUDENTSYNC MANAGEMENT WEB APP</h1>
           <h5 className="text-amber">Students for the Academic Year 2025/2026</h5>
 
-          <div className="flex gap-2 py-2">
+          <div className="d-flex gap-2 py-2">
             <Link to="/" className="btn-fix text-green">
               Learn More
             </Link>
