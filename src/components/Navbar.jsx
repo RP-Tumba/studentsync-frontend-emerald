@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../assets/logo-smait.png';
 import { NavLink } from 'react-router-dom';
 
@@ -7,6 +7,15 @@ const Navbar = () => {
   const navMenu = () => {
     setNavData(!navData ? true : false);
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <div className="navbar">
       <div className="brand">

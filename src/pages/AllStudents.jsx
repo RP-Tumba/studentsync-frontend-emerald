@@ -32,7 +32,7 @@ const AllStudents = () => {
         <div className="flex justify-between items-center student-list-header">
           <h1 className="text-green text-md">All Students</h1>
           <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center fix-search px-2">
+            <div className="d-flex items-center justify-center fix-search px-2">
               <div>
                 <Search className="icon" />
               </div>

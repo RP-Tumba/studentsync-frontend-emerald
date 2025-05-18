@@ -97,8 +97,8 @@ const StudentDetails = () => {
     <>
       <div className="main-update">
         <div className="head-color"></div>
-        <div className="student-update-main">
-          <div className="profile-student">
+        <div className="student-update-main ">
+          <div className="profile-student flex ">
             <div className="inside-profile items-center">
               <img
                 src={`https://ui-avatars.com/api/?name=${studentDetails?.firstName}&background=83C727&color=fff`}
@@ -110,7 +110,7 @@ const StudentDetails = () => {
               </div>
             </div>
 
-            <div>
+            <div className="py-2">
               <button
                 className={`updating-btn ${isEditable ? 'bg-red' : ''}`}
                 id="edit-btn"
