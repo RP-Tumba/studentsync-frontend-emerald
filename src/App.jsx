@@ -20,12 +20,9 @@ const App = () => {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create-students" element={<AddStudent />} />
-            <Route path="/students" element={<AllStudents />} />
             <Route path="/create-student" element={<AddStudent />} />
             <Route path="/students" element={<AllStudents />} />
-            {<Route path="/students/:id" element={<StudentDetails />} />}
-            {<Route path="/students" element={<StudentList />} />}
+            <Route path="/students/:id" element={<StudentDetails />} />
           </Routes>
         </main>
 
