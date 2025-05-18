@@ -1,7 +1,6 @@
-
-import Home from "./pages/Home";
-import AddStudent from "./pages/AddStudent";
-import AllStudents from "./pages/Allstudents";
+import Home from './pages/Home';
+import AddStudent from './pages/AddStudent';
+import AllStudents from './pages/Allstudents';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import StudentList from "./pages/StudentList";
@@ -24,7 +23,9 @@ const App = () => {
       <div className="app-container">
         <Navbar />
 
+
    <CreateForm/>
+
         <main className="main-content">
           <Routes>
             {/* <Route path="/StudentDetails" element={<StudentDetails />} />  */}
@@ -35,6 +36,10 @@ const App = () => {
 
 
             <Route path="/" element={<Home />} />
+
+            <Route path="/create-students" element={<AddStudent />} />
+            <Route path="/students" element={<AllStudents />} />
+
             <Route path="/create-student" element={<AddStudent />} />
             <Route path="/students" element={<AllStudents />} />
 
@@ -49,6 +54,7 @@ const App = () => {
           <Routes>{<Route path="/StudentList" element={<StudentList />} />}</Routes>
 
         </main>
+
 
 
 
