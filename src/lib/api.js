@@ -117,7 +117,7 @@ export const studentService = {
     }
   },
 
-  createStudent: async (studentData) => {
+  createStudent: async studentData => {
     try {
       // Transform camelCase to snake_case for database
       const snakeCaseData = objectToSnakeCase(studentData);
