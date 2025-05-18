@@ -671,7 +671,7 @@ input[type="number"] {
   gap: 1em;
 }
 .items-center{
-  align-items: center;
+  align-items: center !important;
 }
 
 .search{
@@ -723,3 +723,16 @@ input[type="number"] {
   display: flex;
 }
 
+.fix-search input{
+ border: none;
+ outline: none;
+}
+.fix-search{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+
+.rounded{
+  border-radius: 5px;
+}

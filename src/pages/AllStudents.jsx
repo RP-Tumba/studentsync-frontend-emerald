@@ -7,12 +7,22 @@ import AddStudentModal from './AddStudent';
 import { Link } from 'react-router-dom';
 
 const AllStudents = () => {
-  const { students, fetchStudents } = useStudentStore();
+  const { students, fetchStudents, loading } = useStudentStore();
   const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     fetchStudents();
   }, []);
+
+  if (loading)
+    return (
+      <div className="">
+        <div className="loading-container">
+          <div className="loading"></div>
+          <p>loading...</p>
+        </div>
+      </div>
+    );
 
   return (
     <div className="container">
@@ -21,21 +31,17 @@ const AllStudents = () => {
       <div className="student-list">
         <div className="flex justify-between items-center student-list-header">
           <h1 className="text-green text-md">All Students</h1>
-          <div className="flex items-center">
-            <div className="search items-center">
-              <label htmlFor="search-input">
-                <Search className="icon" />
-              </label>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center fix-search px-2">
               <div>
-                <input type="text" placeholder="Search..." name="term" id="search-input" />
+                <Search className="icon" />
+              </div>
+              <div>
+                <input type="text" placeholder="Search..." name="term" />
               </div>
             </div>
             <div className="addStudent">
-              <button onClick={() => (window.location.href = '/create-student')}>
-                + Add Student
-              </button>
-
-              <Link to="/create-student" class="btn">
+              <Link to="/create-student" className="fix-btn px-2 py-2 rounded bg-green text-white">
                 Add Student
               </Link>
             </div>
@@ -59,7 +65,6 @@ const AllStudents = () => {
             <tbody>
               {students.map(student => (
                 <tr key={student.id}>
-                  <td>{student.id}</td>
                   <td>
                     {student.firstName} {student.lastName}
                   </td>
@@ -82,7 +87,7 @@ const AllStudents = () => {
                 </tr>
               ))}
 
-              {students.length === 0 && (
+              {!loading && students.length === 0 && (
                 <tr>
                   <td colSpan="8" style={{ textAlign: 'center' }}>
                     No students found.
