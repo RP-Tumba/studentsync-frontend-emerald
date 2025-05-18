@@ -31,15 +31,23 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+
             <Link to="/AddStudent" className="text-black">
+            <Link to="/create-student" className="text-black">
               Add Student
             </Link>
           </li>
           <li>
+
             <Link to="/AllStudents" className="text-green">
           <button className="text-green btn-outline-green"> All Students</button></Link>
 
-      
+
+            <Link to="/students" className="text-green">
+              <button className="text-green btn-outline-green"> All Students</button>
+            </Link>
+
+
       <div className="brand">
         <div className="nav-image">
           <img src={logo} alt="" />
