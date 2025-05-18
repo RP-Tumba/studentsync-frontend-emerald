@@ -19,7 +19,6 @@ const AddStudentModal = ({ onClose }) => {
       reset();
       onClose();
     } catch (e) {
-      toast.error('Failed to add student.');
       console.log(e.message);
     } finally {
       setLoading(false);

@@ -11,12 +11,9 @@ const AllStudents = () => {
     fetchStudents();
   }, []);
 
-  const closeModal = () => {
-    setShowAddModal(prev => !prev);
-  };
   return (
     <div className="container">
-      {showAddModal && <AddStudentModal onClose={closeModal} />}
+      {showAddModal && <AddStudentModal onClose={() => setShowAddModal(false)} />}
 
       <div className="student-list">
         <div className="flex justify-between items-center student-list-header">
@@ -31,7 +28,9 @@ const AllStudents = () => {
               </div>
             </div>
             <div className="addStudent">
-              <button onClick={() => setShowAddModal(true)}>+ Add Student</button>
+              <button onClick={() => (window.location.href = '/create-student')}>
+                + Add Student
+              </button>
             </div>
           </div>
         </div>
