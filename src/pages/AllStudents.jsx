@@ -1,7 +1,12 @@
 import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
+
 import { useEffect, useState } from 'react';
 import AddStudentModal from './AddStudent';
+
+
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const AllStudents = () => {
   const { students, fetchStudents } = useStudentStore();
@@ -28,9 +33,15 @@ const AllStudents = () => {
               </div>
             </div>
             <div className="addStudent">
+
               <button onClick={() => (window.location.href = '/create-student')}>
                 + Add Student
               </button>
+
+              <Link to="/create-student" class="btn">
+                Add Student
+              </Link>
+
             </div>
           </div>
         </div>
@@ -66,9 +77,13 @@ const AllStudents = () => {
                       <button className="btn-action delete">
                         <Delete />
                       </button>
+
                       <button className="btn-action edit">
+
+                      <Link to={`/students/${student.id}`} id="edit">
+
                         <Edit />
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>
