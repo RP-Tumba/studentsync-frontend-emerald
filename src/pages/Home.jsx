@@ -6,10 +6,7 @@ import img5 from '../assets/img-5.png';
 import img6 from '../assets/img-6.png';
 import img7 from '../assets/img-7.png';
 
-
-import { FaClock, FaHandRock, FaUser, FaGreaterThan } from 'react-icons/fa';
 import { ArrowLeft, Handshake, LockClock, VerifiedUser } from '@mui/icons-material';
-
 
 const Home = () => {
   return (
@@ -47,12 +44,9 @@ const Home = () => {
         <h2 className="text-gray">The Gym College Students management</h2>
       </div>
 
-      <div className="culture-content pt  ">
+      <div className="pt flex ">
         <div className="culture-content1">
           <div className="culture-icon-title">
-
-            <FaHandRock />
-
             <Handshake />
 
             <h4 className="text-back">Digital transformation</h4>
@@ -65,9 +59,6 @@ const Home = () => {
         </div>
         <div className="culture-content1 culture-content-bgl-blue">
           <div className="culture-icon-title">
-
-            <FaClock />
-
             <LockClock />
 
             <h4 className="text-white">Disciplined and Productive</h4>
@@ -80,9 +71,6 @@ const Home = () => {
         </div>
         <div className="culture-content1">
           <div className="culture-icon-title">
-
-            <FaUser />
-
             <VerifiedUser />
 
             <h4 className="text-black">Race Towards Goodness</h4>
@@ -124,8 +112,6 @@ const Home = () => {
           <div className="flex text-green more-image ">
             <p>
               <span className="low-size-p">More pictures</span>
-
-              <FaGreaterThan size={10} />
 
               <ArrowLeft size={10} />
             </p>

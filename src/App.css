@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,7 +14,6 @@ body {
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
-  background-color: #f8f7fd;
   color: #2d2d2d;
 }
 
@@ -276,4 +275,4 @@ body {
   .view-link {
     padding: 0.2rem 0.5rem;
   }
-} */
+} 

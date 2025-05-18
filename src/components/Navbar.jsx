@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import logo from '../assets/logo-smait.png';
-import { Link, NavLink } from 'react-router-dom';
-import { dark } from '@mui/material/styles/createPalette';
+import { NavLink } from 'react-router-dom';
+
 // import MenuIcon from '@material-ui/icons/Menu';
 
-
 const Navbar = () => {
-
-  const [navData, setNavData] = useState(false)
-  const navMenu = ()=>{
-    setNavData(!navData ? true: false)
-  }
+  const [navData, setNavData] = useState(false);
+  const navMenu = () => {
+    setNavData(!navData ? true : false);
+  };
   return (
     <div className="navbar">
-
       <div className="brand">
         <div className="nav-image">
           <img src={logo} alt="" />
@@ -22,48 +19,15 @@ const Navbar = () => {
           <h1 className="text-gray">STUDENTSYNC</h1>
         </div>
       </div>
-
+      <div className="nav-display-manu" onClick={navMenu}>
+        &#9776;
+      </div>
       <div className="nav-right">
-        <ul>
+        <ul className={navData ? 'active-nav' : ''}>
           <li>
-            <Link to="/" className="text-green">
+            <NavLink to="/" className="text-black">
               Home
-            </Link>
-          </li>
-          <li>
-
-            <Link to="/AddStudent" className="text-black">
-            <Link to="/create-student" className="text-black">
-              Add Student
-            </Link>
-          </li>
-          <li>
-
-            <Link to="/AllStudents" className="text-green">
-          <button className="text-green btn-outline-green"> All Students</button></Link>
-
-
-            <Link to="/students" className="text-green">
-              <button className="text-green btn-outline-green"> All Students</button>
-            </Link>
-
-
-      <div className="brand">
-        <div className="nav-image">
-          <img src={logo} alt="" />
-        </div>
-        <div className="brand-title">
-          <h1 className="text-gray">STUDENTSYNC</h1>
-        </div>
-      </div>
-           <div className='nav-display-manu' onClick={navMenu}>
-            &#9776;
-        
-            </div>    
-      <div className="nav-right">
-        <ul className={navData ? "active-nav":""}>
-          <li>
-            <NavLink to="/" className="text-black">Home</NavLink >
+            </NavLink>
           </li>
           <li>
             <NavLink to="/create-student" className="text-black">
@@ -74,14 +38,11 @@ const Navbar = () => {
             <NavLink to="/students" className="text-black">
               All Students
             </NavLink>
-
           </li>
         </ul>
       </div>
     </div>
   );
-
-
 };
 
 export default Navbar;
