@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import logo from '../assets/logo-smait.png';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { Add, Book, Home, Menu } from '@mui/icons-material';
 
 const Navbar = () => {
   const [navData, setNavData] = useState(false);
@@ -17,37 +18,71 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="navbar">
-      <div className="brand">
-        <div className="nav-image">
-          <img src={logo} alt="" />
+    <div className="nav">
+      <div className="d-flex justify-around items-center px-2 py-2">
+        <div className="brand">
+          <div className="nav-image">
+            <img src={logo} alt="" />
+          </div>
+          <div className={`brand-title ${navData ? 'hidden' : ''}`}>
+            <h1 className="text-gray">STUDENTSYNC</h1>
+          </div>
         </div>
-        <div className="brand-title">
-          <h1 className="text-gray">STUDENTSYNC</h1>
+        <button id="menu" onClick={navMenu}>
+          <Menu />
+        </button>
+
+        <div className="nav-right">
+          <ul className={navData ? 'active-nav' : ''}>
+            <li>
+              <NavLink to="/" className="text-black">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/create-student" className="text-black">
+                Add Student
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/students" className="text-black">
+                All Students
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="nav-display-manu" onClick={navMenu}>
-        &#9776;
-      </div>
-      <div className="nav-right">
-        <ul className={navData ? 'active-nav' : ''}>
-          <li>
-            <NavLink to="/" className="text-black">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/create-student" className="text-black">
-              Add Student
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/students" className="text-black">
-              All Students
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+
+      {navData && (
+        <div className="small-nav px-2 py-2">
+          <Link to="/" className="d-flex gap-2 py-2 items-center">
+            <div className="logo">
+              <img src={logo} alt="" />
+            </div>
+            <div className="">
+              <h1 className="title">STUDENTSYNC</h1>
+            </div>
+          </Link>
+          <hr />
+          <ul className="py-2">
+            <li>
+              <NavLink to="/" className="text-black d-flex items-center">
+                <Home /> <span>Home</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/create-student" className="text-black d-flex items-center">
+                <Add /> <span> Add Student</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/students" className="text-black d-flex items-center">
+                <Book /> <span>All Students</span>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
