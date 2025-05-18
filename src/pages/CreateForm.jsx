@@ -1,10 +1,12 @@
+// import logimage from '..assets/log-swait-image.png'
+
 import { useForm } from 'react-hook-form';
 import useStudentStore from '../store/studentStore';
 const CreateForm = () => {
-  const { error } = useStudentStore();
+  const { error, addStudent } = useStudentStore();
   const { register, handleSubmit } = useForm();
   const onSubmit = async data => {
-    console.log(data);
+    await addStudent(data);
   };
 
   return (

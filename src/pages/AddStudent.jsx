@@ -1,7 +1,9 @@
+import CreateForm from './CreateForm';
+
 const AddStudent = () => {
   return (
     <div>
-      <h1>Add Students here</h1>
+      <CreateForm />
     </div>
   );
 };
