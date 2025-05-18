@@ -1,5 +1,6 @@
 import { Delete, Edit, Search } from '@mui/icons-material';
 import useStudentStore from '../store/studentStore';
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 const AllStudents = () => {
   const { students, fetchStudents, loading, error } = useStudentStore();
@@ -27,7 +28,9 @@ const AllStudents = () => {
               </div>
             </div>
             <div className="addStudent">
-              <button>Add Student</button>
+              <Link to="/create-student" class="btn">
+                Add Student
+              </Link>
             </div>
           </div>
         </div>
@@ -61,9 +64,9 @@ const AllStudents = () => {
                       <button id="delete">
                         <Delete />
                       </button>
-                      <button id="edit">
+                      <Link to={`/students/${student.id}`} id="edit">
                         <Edit />
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>
