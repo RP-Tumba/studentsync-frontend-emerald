@@ -40,6 +40,15 @@
 
 }
 
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #83C727;
+  --white-color: #FFFFFF;
+
+}
+
   }
   .student-update-main{
     width: 80%;
@@ -210,7 +219,9 @@ span{
 
 button:hover {
   border-color: #83C727;
+
   }
+
 .error-message {
   color: red;
   font-weight: bold;
@@ -390,7 +401,6 @@ cursor: pointer;
   justify-content: center;
   padding: 0 1.5em;
 }
-
 .culture-content{
   display: block !important;
   gap: 2rem;
@@ -398,6 +408,121 @@ cursor: pointer;
 }
 
 }
+
+
+
+/* *******banner section */
+body{
+  background-color: white !important;
+}
+.container{
+  background-color: var(--white-color);
+    
+}
+.text-amber{
+  color: #d49104;
+}
+.intro{
+  display: flex;
+  gap:3em;
+  padding: 1em;
+  align-items: center;
+}
+.right-side img{
+  width: 100%;
+}
+.right-side{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:1em
+}
+.right-side div:first-child{
+  grid-column: 1/4 ;
+}
+
+.h-b img{
+  height: 120px;
+}
+.left-side{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.left-side h1{
+  font-size:3em;
+  font-weight: 600;
+  line-height: 70px;
+}
+.btn-outline-green{
+  border: 2px solid #83C727;
+}
+.flex{
+  display: flex;
+  gap: 1em;
+}
+
+.bg-green{
+  background-color: #83C727;
+}
+.text-white{
+  color: #ffffff;
+}
+.culture h3{
+  text-align: center;
+}
+.culture h2{
+text-align: center;
+}
+.culture-icon-title{
+  display: flex;
+  gap:0.4rem;
+  align-items: center;
+}
+.low-size-p{
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px;
+}
+.culture-content1{
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+.culture-content-bgl-blue{
+  background-color: #67629D;
+}
+.culture-content{
+  display: flex;
+  gap: 0.5rem;
+
+} 
+.culture{
+  padding-top: 3rem;
+}
+.gallery-link{
+  gap: 4rem;
+  justify-content: center;
+}
+.gallery img{
+  width: 100%;
+  border-radius: 10px;
+}
+.more-image{
+  align-items: center;
+  justify-content: right;
+}
+
+
+.pt{
+  padding-top: 3rem;
+  }
+.culture-content{
+  display: block !important;
+  gap: 2rem;
+  
+}
+
+
 
 
 
@@ -621,7 +746,7 @@ text-align: center;
 
 
 
-}
+
 
 .active{
    color: #83C727 !important;
