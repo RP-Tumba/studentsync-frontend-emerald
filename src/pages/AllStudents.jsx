@@ -3,24 +3,36 @@ import useStudentStore from '../store/studentStore';
 import { studentService } from '../lib/api';
 import { useEffect, useState } from 'react';
 import AddStudentModal from './AddStudent';
+import { ToastContainer } from 'react-toastify';
+import DeleteModal from '../components/DeleteModal';
 
 import { Link } from 'react-router-dom';
 const AllStudents = () => {
   const { students, fetchStudents, loading, error } = useStudentStore();
   const [showAddModal, setShowAddModal] = useState(false);
-
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [id, setId] = useState(null);
   useEffect(() => {
     fetchStudents();
   }, []);
 
-  const handleDelete = async id => {
+  const handleDelete = id => {
+    setId(id);
+    setShowDeleteModal(true);
+  };
+  const confirmDelete = async () => {
     try {
       const data = await studentService.deleteStudent(id);
+
       if (data) fetchStudents();
-      alert('Student deleted successfully..');
+      setShowDeleteModal(false);
     } catch {
       console.log(error);
     }
+  };
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setId(null);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -29,7 +41,14 @@ const AllStudents = () => {
   return (
     <div className="container">
       {showAddModal && <AddStudentModal onClose={() => setShowAddModal(false)} />}
-
+      {showDeleteModal && (
+        <DeleteModal
+          onClose={cancelDelete}
+          onConfirm={confirmDelete}
+          message="Are you sure you want to delete this student?"
+        />
+      )}
+      <ToastContainer />
       <div className="student-list">
         <div className="flex justify-between items-center student-list-header">
           <h1 className="text-green text-md">All Students</h1>
