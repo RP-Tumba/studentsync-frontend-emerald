@@ -20,14 +20,14 @@ const Navbar = () => {
   return (
     <div className="nav">
       <div className="d-flex justify-around items-center px-2 py-2">
-        <div className="brand">
+        <Link to="/" className="brand">
           <div className="nav-image">
             <img src={logo} alt="" />
           </div>
           <div className={`brand-title ${navData ? 'hidden' : ''}`}>
             <h1 className="text-gray">STUDENTSYNC</h1>
           </div>
-        </div>
+        </Link>
         <button id="menu" onClick={navMenu}>
           <Menu />
         </button>
