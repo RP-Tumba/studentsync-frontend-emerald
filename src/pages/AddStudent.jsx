@@ -11,13 +11,19 @@ const AddStudentModal = ({ onClose }) => {
   const { register, handleSubmit, reset } = useForm();
   const [loading, setLoading] = useState(false);
 
+  const afterSuccess = () => {
+    reset();
+    onClose();
+    navigate('/students');
+  };
+
   const onSubmit = async data => {
     setLoading(true);
     try {
       await addStudent(data);
-      toast.success('Student added successfully!');
-      reset();
-      onClose();
+      toast.success('Student added successfully!', {
+        onClose: afterSuccess,
+      });
     } catch (e) {
       console.log(e.message);
     } finally {
@@ -79,7 +85,7 @@ const AddStudentModal = ({ onClose }) => {
             {loading ? 'Adding...' : 'Add'}
           </button>
           <button type="button" onClick={handleCancel} className="btn white">
-            Cancel
+            Goback
           </button>
         </div>
       </form>
