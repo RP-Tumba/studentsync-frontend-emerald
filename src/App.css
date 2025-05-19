@@ -146,7 +146,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .student-table {
@@ -275,4 +275,4 @@ body {
   .view-link {
     padding: 0.2rem 0.5rem;
   }
-} 
+}
