@@ -5,15 +5,13 @@ import useStudentStore from '../store/studentStore';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddStudentModal = ({ onClose }) => {
+const AddStudentModal = () => {
   const navigate = useNavigate();
   const { addStudent } = useStudentStore();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
 
   const afterSuccess = () => {
-    reset();
-    onClose();
     navigate('/students');
   };
 
